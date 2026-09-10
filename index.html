@@ -1,0 +1,1723 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title id="pageTitle">Chino's Petshop — Makanan, Aksesoris, Jasa Pacak & Titip Jual Anakan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Fredoka:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #f26a36;
+    --primary-dark: #d9531e;
+    --teal: #2ec4b6;
+    --dark: #1e293b;
+    --cream: #fbfaf8;
+    --white: #ffffff;
+    --muted: #64748b;
+    --amber: #f59e0b;
+    --green: #25d366;
+    --blue: #3b82f6;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color: transparent; }
+  html { scroll-behavior: smooth; }
+  html, body { overflow-x: hidden; width: 100%; }
+  body { font-family:'Poppins', sans-serif; color:var(--dark); background:var(--cream); line-height:1.6; }
+  a { text-decoration:none; }
+  .container { max-width:1180px; margin:0 auto; padding:0 20px; }
+  .ic-svg { vertical-align:-0.15em; display:inline-block; }
+
+  /* TOP ANNOUNCEMENT BAR */
+  .top-bar { background:#0f172a; color:#f8fafc; font-size:.82rem; padding:8px 0; border-bottom:1px solid rgba(255,255,255,0.08); position:relative; z-index:55; }
+  .top-bar-inner { display:flex; align-items:center; justify-content:center; gap:26px; flex-wrap:wrap; text-align:center; font-weight:500; }
+  .top-bar-item { display:inline-flex; align-items:center; gap:8px; }
+  .top-bar-item .tb-ic { color:#ffe873; font-size:1em; }
+  .top-bar-dot { color:rgba(255,255,255,0.3); font-size:1rem; }
+  
+  /* HEADER */
+  header { position:sticky; top:0; z-index:50; background:rgba(251,250,248,0.96); backdrop-filter:blur(10px); box-shadow:0 2px 18px rgba(0,0,0,0.05); }
+  nav { display:flex; align-items:center; justify-content:space-between; height:70px; }
+  .logo { font-family:'Fredoka', cursive; font-size:1.55rem; color:var(--primary); display:flex; align-items:center; gap:6px; flex-shrink:0; }
+  .logo span { color:var(--teal); }
+  .nav-links { display:flex; gap:18px; }
+  .nav-links a { color:var(--dark); font-weight:500; font-size:0.9rem; transition:.2s; }
+  .nav-links a:hover { color:var(--primary); }
+  
+  .nav-actions { display:flex; align-items:center; gap:10px; }
+  .nav-cart { position:relative; background:var(--primary); color:#fff; padding:9px 16px; border-radius:30px; font-weight:600; cursor:pointer; border:none; font-size:.9rem; display:inline-flex; align-items:center; gap:7px; transition:.2s; }
+  .nav-cart:hover { background:var(--primary-dark); }
+  .nav-cart .badge { position:absolute; top:-7px; right:-7px; background:var(--teal); color:#fff; font-size:.72rem; font-weight:700; min-width:22px; height:22px; border-radius:50%; display:flex; align-items:center; justify-content:center; border:2px solid #fff; }
+
+  .menu-toggle { display:none; background:none; border:none; cursor:pointer; padding:6px; flex-direction:column; gap:5px; z-index:60; }
+  .menu-toggle span { display:block; width:24px; height:2.5px; background:var(--dark); border-radius:3px; transition:.3s; }
+  .menu-toggle.active span:nth-child(1) { transform:translateY(7.5px) rotate(45deg); }
+  .menu-toggle.active span:nth-child(2) { opacity:0; }
+  .menu-toggle.active span:nth-child(3) { transform:translateY(-7.5px) rotate(-45deg); }
+
+  .mobile-menu { position:fixed; top:70px; left:0; width:100%; background:#fff; border-bottom:1px solid #ede8e1; box-shadow:0 12px 24px rgba(0,0,0,0.06); padding:20px; display:none; flex-direction:column; gap:14px; z-index:45; }
+  .mobile-menu.open { display:flex; }
+  .mobile-menu a { font-size:1rem; font-weight:600; color:var(--dark); padding:8px 0; border-bottom:1px solid #f8fafc; }
+  .mobile-menu a:hover { color:var(--primary); }
+
+  /* HERO */
+  .hero { position:relative; background:linear-gradient(135deg, #f26a36 0%, #ff8c42 100%); color:#fff; overflow:hidden; }
+  .hero-paw { position:absolute; right:-20px; bottom:-40px; font-size:18rem; opacity:.1; color:#fff; pointer-events:none; }
+  .hero-inner { display:flex; align-items:center; gap:36px; padding:60px 0; flex-wrap:wrap; position:relative; z-index:1; }
+  .hero-text { flex:1.1; min-width:300px; }
+  .hero-badge { display:inline-flex; align-items:center; gap:7px; background:rgba(255,255,255,.2); padding:8px 18px; border-radius:30px; font-size:1.02rem; margin-bottom:16px; font-weight:600; }
+  .hero-text h1 { font-size:3.1rem; font-weight:800; line-height:1.18; margin-bottom:18px; }
+  .hero-text h1 em { font-family:'Fredoka', cursive; color:#ffe873; font-style:normal; }
+  .hero-text p { font-size:1.05rem; opacity:.95; margin-bottom:26px; max-width:540px; }
+  .hero-btns { display:flex; gap:12px; flex-wrap:wrap; }
+  .btn { padding:12px 24px; border-radius:34px; font-weight:600; transition:.25s; display:inline-flex; align-items:center; gap:8px; cursor:pointer; border:none; font-family:inherit; font-size:0.92rem; }
+  .btn-accent { background:#ffe873; color:#78350f; font-weight:700; }
+  .btn-accent:hover { transform:translateY(-2px); box-shadow:0 8px 20px rgba(0,0,0,.15); }
+  .btn-ghost { border:2px solid #fff; color:#fff; background:transparent; }
+  .btn-ghost:hover { background:#fff; color:var(--primary); }
+  .hero-img { flex:0.9; min-width:280px; text-align:center; }
+  .hero-img img { width:100%; max-width:420px; border-radius:24px; box-shadow:0 20px 45px rgba(0,0,0,.22); transform:rotate(-1deg); object-fit:cover; height:360px; }
+
+  /* STATS */
+  .stats { display:flex; justify-content:center; gap:50px; flex-wrap:wrap; padding:28px 20px; background:#fff; border-bottom:1px solid #f0ece6; }
+  .stat { text-align:center; }
+  .stat h3 { font-size:1.9rem; color:var(--primary); font-weight:800; }
+  .stat .stat-star { color:var(--amber); font-size:1.2rem; }
+  .stat p { color:var(--muted); font-size:.85rem; font-weight:500; }
+
+  /* BAR KEUNGGULAN (USP) */
+  .usp-sec { background:#fff; padding:32px 0; border-bottom:1px solid #ede8e1; }
+  .usp-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:20px; }
+  .usp-card { display:flex; align-items:flex-start; gap:15px; padding:18px 20px; background:#fbfaf8; border-radius:18px; border:1.5px solid #f0ece5; transition:.25s; }
+  .usp-card:hover { transform:translateY(-3px); box-shadow:0 10px 24px rgba(0,0,0,.06); border-color:#e2dad0; }
+  .usp-icon { width:48px; height:48px; border-radius:14px; background:rgba(242,106,54,0.12); color:var(--primary); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .usp-card:nth-child(2) .usp-icon { background:rgba(46,196,182,0.14); color:var(--teal); }
+  .usp-card:nth-child(3) .usp-icon { background:rgba(245,158,11,0.14); color:var(--amber); }
+  .usp-text h4 { font-size:.98rem; font-weight:700; color:var(--dark); margin-bottom:3px; line-height:1.3; }
+  .usp-text p { font-size:.84rem; color:var(--muted); line-height:1.45; }
+
+  /* FILTER BAR & SEARCH */
+  .catalog-controls { background:#fff; border-radius:20px; padding:18px 20px; box-shadow:0 4px 18px rgba(0,0,0,.04); border:1px solid #ede8e1; margin-bottom:32px; display:flex; flex-direction:column; gap:14px; }
+  .search-wrap { position:relative; width:100%; }
+  .search-wrap input { width:100%; padding:12px 18px 12px 44px; border-radius:30px; border:1.5px solid #e2e8f0; font-size:.92rem; font-family:inherit; outline:none; transition:.2s; }
+  .search-wrap input:focus { border-color:var(--primary); box-shadow:0 0 0 3px rgba(242,106,54,0.15); }
+  .search-icon { position:absolute; left:16px; top:50%; transform:translateY(-50%); color:var(--muted); }
+  
+  .filter-tabs { display:flex; gap:8px; overflow-x:auto; padding-bottom:4px; scrollbar-width:none; -webkit-overflow-scrolling:touch; }
+  .filter-tabs::-webkit-scrollbar { display:none; }
+  .ftab { flex-shrink:0; background:#f1f5f9; border:none; padding:8px 16px; border-radius:22px; font-weight:600; font-size:.84rem; color:var(--dark); cursor:pointer; transition:.2s; font-family:inherit; white-space:nowrap; }
+  .ftab:hover { background:#e2e8f0; }
+  .ftab.active { background:var(--primary); color:#fff; }
+
+  /* CATALOG GRID & HARGA CORET */
+  section.catalog { padding:60px 0; }
+  .sec-head { text-align:center; margin-bottom:30px; }
+  .sec-head span { color:var(--primary); font-weight:700; letter-spacing:1.2px; text-transform:uppercase; font-size:.82rem; }
+  .sec-head h2 { font-size:2.1rem; font-weight:800; margin-top:5px; color:var(--dark); }
+  .sec-head p { color:var(--muted); max-width:580px; margin:8px auto 0; font-size:0.95rem; }
+  .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+  
+  .card { background:#fff; border-radius:18px; overflow:hidden; box-shadow:0 4px 18px rgba(0,0,0,.05); transition:.3s; display:flex; flex-direction:column; border:1px solid #f1ede7; height:100%; }
+  .card:hover { transform:translateY(-5px); box-shadow:0 14px 30px rgba(0,0,0,.09); border-color:#e2dad0; }
+  .card.hide { display:none !important; }
+  .card-img { height:210px; overflow:hidden; position:relative; background:#f4f4f5; flex-shrink:0; cursor:pointer; }
+  .card-img img { width:100%; height:100%; object-fit:cover; transition:.4s; }
+  .card:hover .card-img img { transform:scale(1.05); }
+  .card-tag { position:absolute; top:10px; left:10px; background:rgba(255,255,255,0.94); backdrop-filter:blur(4px); padding:3px 9px; border-radius:10px; font-size:.72rem; font-weight:700; color:var(--primary); box-shadow:0 2px 6px rgba(0,0,0,0.06); }
+  .card-zoom-hint { position:absolute; bottom:8px; right:8px; background:rgba(15,23,42,0.75); color:#fff; font-size:.68rem; padding:3px 8px; border-radius:8px; backdrop-filter:blur(4px); display:flex; align-items:center; gap:4px; font-weight:600; }
+  .card-body { padding:16px; display:flex; flex-direction:column; flex:1; justify-content:space-between; }
+  .card-body h3 { font-size:1.05rem; margin-bottom:5px; font-weight:700; line-height:1.35; cursor:pointer; }
+  .card-body p { color:var(--muted); font-size:.84rem; min-height:42px; line-height:1.45; }
+  
+  /* HARGA CORET & DISKON */
+  .price-wrap { display:flex; align-items:baseline; gap:8px; flex-wrap:wrap; margin-top:8px; }
+  .orig-price { text-decoration:line-through; color:#94a3b8; font-size:.85rem; font-weight:500; }
+  .price { font-weight:800; color:var(--primary); font-size:1.18rem; }
+  .disc-badge { background:#fee2e2; color:#ef4444; font-size:.7rem; font-weight:700; padding:1px 6px; border-radius:6px; }
+
+  /* TOMBOL TAMBAH & BELI CEPAT 1-KLIK */
+  .btn-row { display:flex; gap:6px; margin-top:10px; }
+  .qty-row { display:flex; align-items:center; justify-content:space-between; gap:6px; flex:1; }
+  .qty { display:flex; align-items:center; gap:4px; border:1.5px solid #eae6df; border-radius:24px; padding:2px 5px; flex-shrink:0; }
+  .qty button { width:24px; height:24px; border:none; background:#f5f3ef; border-radius:50%; font-size:.95rem; font-weight:700; cursor:pointer; color:var(--primary); transition:.15s; }
+  .qty button:hover { background:var(--primary); color:#fff; }
+  .q-val { min-width:18px; text-align:center; font-weight:700; font-size:.85rem; }
+  .add-cart { flex:1; background:var(--dark); color:#fff; padding:8px 10px; border-radius:24px; font-size:.8rem; font-weight:600; cursor:pointer; border:none; transition:.2s; font-family:inherit; display:inline-flex; align-items:center; justify-content:center; gap:4px; white-space:nowrap; }
+  .add-cart:hover { background:var(--primary); }
+  .add-cart.added { background:var(--teal); }
+  .btn-fast-buy { background:var(--green); color:#fff; border:none; border-radius:24px; padding:8px 12px; font-size:.8rem; font-weight:700; cursor:pointer; display:inline-flex; align-items:center; gap:4px; transition:.2s; white-space:nowrap; }
+  .btn-fast-buy:hover { filter:brightness(1.08); transform:scale(1.02); }
+
+  .not-found { text-align:center; padding:45px 20px; color:var(--muted); font-size:1rem; display:none; grid-column:1 / -1; }
+
+  /* JASA PACAK SECTION */
+  .pacak-sec { padding:70px 0; background:linear-gradient(135deg, #1e293b 0%, #0f172a 100%); color:#fff; }
+  .pacak-sec .sec-head span { color:#ffe873; }
+  .pacak-sec .sec-head h2 { color:#fff; }
+  .pacak-sec .sec-head p { color:#cbd5e1; }
+  
+  .pacak-grid { display:flex; justify-content:center; margin-bottom:36px; }
+  .stud-card { background:#1e293b; border:1px solid #334155; border-radius:22px; overflow:hidden; transition:.3s; display:flex; flex-direction:column; max-width:400px; width:100%; box-shadow:0 10px 30px rgba(0,0,0,0.3); }
+  .stud-card:hover { transform:translateY(-6px); box-shadow:0 18px 40px rgba(0,0,0,.45); border-color:var(--teal); }
+  .stud-img { height:260px; overflow:hidden; position:relative; background:#0f172a; }
+  .stud-img img { width:100%; height:100%; object-fit:cover; transition:.4s; }
+  .stud-card:hover .stud-img img { transform:scale(1.05); }
+  .stud-body { padding:22px; flex:1; display:flex; flex-direction:column; }
+  .stud-body h3 { font-size:1.35rem; font-weight:700; margin-bottom:4px; color:#fff; }
+  .stud-breed { font-size:.9rem; color:var(--teal); font-weight:600; margin-bottom:12px; }
+  .stud-features { list-style:none; margin-bottom:20px; flex:1; }
+  .stud-features li { font-size:.88rem; color:#cbd5e1; margin-bottom:8px; display:flex; align-items:center; gap:8px; }
+  .stud-features li svg { color:#ffe873; flex-shrink:0; }
+  .stud-price { font-size:1.35rem; font-weight:800; color:#ffe873; margin-bottom:16px; }
+  .btn-pacak { background:var(--teal); color:#fff; width:100%; padding:12px; border-radius:30px; font-weight:700; font-size:.92rem; border:none; cursor:pointer; transition:.2s; display:inline-flex; align-items:center; justify-content:center; gap:7px; }
+  .btn-pacak:hover { background:#24a498; transform:translateY(-2px); }
+
+  /* ================= TEMPAT TITIP JUAL ANAKAN (BURSA MARKETPLACE) ================= */
+  .market-sec { margin-top:55px; border-top:1px solid rgba(255,255,255,0.12); padding-top:45px; }
+  
+  /* Filter Tab Khusus Bursa */
+  .bursa-tabs { display:flex; justify-content:center; gap:8px; margin:20px 0; flex-wrap:wrap; }
+  .btab { background:rgba(255,255,255,0.08); color:#cbd5e1; border:1px solid #334155; padding:8px 18px; border-radius:24px; font-weight:600; font-size:.85rem; cursor:pointer; transition:.2s; font-family:inherit; }
+  .btab:hover, .btab.active { background:var(--teal); color:#fff; border-color:var(--teal); }
+
+  .market-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:22px; margin-top:18px; }
+  .market-card { background:#0f172a; border:1.5px solid #334155; border-radius:20px; overflow:hidden; transition:.3s; display:flex; flex-direction:column; height:100%; }
+  .market-card:hover { transform:translateY(-5px); border-color:var(--primary); box-shadow:0 14px 34px rgba(242,106,54,0.25); }
+  .market-img { height:210px; overflow:hidden; position:relative; background:#1e293b; flex-shrink:0; cursor:pointer; }
+  .market-img img { width:100%; height:100%; object-fit:cover; transition:.4s; }
+  .market-card:hover .market-img img { transform:scale(1.06); }
+  .market-status { position:absolute; top:10px; left:10px; font-size:.72rem; font-weight:700; padding:3px 10px; border-radius:12px; backdrop-filter:blur(4px); box-shadow:0 2px 8px rgba(0,0,0,0.3); }
+  .status-ready { background:rgba(16,185,129,0.92); color:#fff; }
+  .status-booked { background:rgba(245,158,11,0.92); color:#fff; }
+  .photo-count-badge { position:absolute; bottom:10px; right:10px; background:rgba(15,23,42,0.8); color:#fff; font-size:.7rem; font-weight:700; padding:3px 9px; border-radius:10px; backdrop-filter:blur(4px); display:flex; align-items:center; gap:4px; }
+  
+  .market-body { padding:18px; flex:1; display:flex; flex-direction:column; justify-content:space-between; }
+  .market-title { font-size:1.1rem; font-weight:700; color:#fff; margin-bottom:6px; line-height:1.3; cursor:pointer; }
+  .market-tags { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:12px; }
+  .m-tag { font-size:.72rem; background:rgba(255,255,255,0.08); color:#cbd5e1; padding:3px 8px; border-radius:6px; font-weight:600; }
+  .market-desc { font-size:.84rem; color:#94a3b8; line-height:1.45; margin-bottom:14px; }
+  .market-foot { display:flex; align-items:center; justify-content:space-between; padding-top:12px; border-top:1px solid #1e293b; }
+  .market-price { font-size:1.2rem; font-weight:800; color:#ffe873; }
+  .btn-adopt { background:var(--green); color:#fff; padding:9px 16px; border-radius:20px; font-size:.82rem; font-weight:700; display:inline-flex; align-items:center; gap:6px; transition:.2s; }
+  .btn-adopt:hover { filter:brightness(1.1); transform:scale(1.03); }
+
+  /* KOTAK SYARAT & KETENTUAN TITIP JUAL */
+  .snk-box { background:rgba(15,23,42,0.8); border:1.5px solid #334155; border-radius:20px; padding:28px 24px; margin-top:32px; }
+  .snk-head { display:flex; align-items:center; gap:12px; margin-bottom:18px; }
+  .snk-head h4 { font-size:1.2rem; color:#ffe873; font-weight:700; }
+  .snk-grid { display:grid; grid-template-columns:repeat(4, 1fr); gap:16px; }
+  .snk-item { background:rgba(255,255,255,0.03); border:1px solid #1e293b; border-radius:14px; padding:14px; }
+  .snk-num { display:inline-block; width:26px; height:26px; border-radius:50%; background:var(--primary); color:#fff; font-size:.8rem; font-weight:800; text-align:center; line-height:26px; margin-bottom:8px; }
+  .snk-item h5 { font-size:.9rem; color:#fff; font-weight:700; margin-bottom:4px; }
+  .snk-item p { font-size:.78rem; color:#94a3b8; line-height:1.4; }
+
+  /* KOTAK AJAKAN TITIP JUAL */
+  .titip-box { background:linear-gradient(135deg, rgba(242,106,54,0.18) 0%, rgba(46,196,182,0.15) 100%); border:1.5px dashed rgba(255,255,255,0.25); border-radius:20px; padding:28px 24px; text-align:center; margin-top:24px; }
+  .titip-box h4 { font-size:1.25rem; font-weight:700; color:#fff; margin-bottom:6px; }
+  .titip-box p { font-size:.88rem; color:#cbd5e1; max-width:620px; margin:0 auto 16px; }
+  .btn-titip { background:var(--primary); color:#fff; padding:11px 24px; border-radius:30px; font-weight:700; font-size:.9rem; display:inline-flex; align-items:center; gap:8px; transition:.2s; }
+  .btn-titip:hover { background:var(--primary-dark); transform:translateY(-2px); }
+
+  /* ================= MODAL LIGHTBOX FOTO DETAIL (4 FOTO) ================= */
+  .lightbox-modal { position:fixed; inset:0; background:rgba(0,0,0,0.85); backdrop-filter:blur(6px); z-index:200; display:none; align-items:center; justify-content:center; padding:16px; }
+  .lightbox-modal.open { display:flex; }
+  .lightbox-box { background:#0f172a; border:1.5px solid #334155; border-radius:22px; width:100%; max-width:680px; max-height:92vh; overflow-y:auto; display:flex; flex-direction:column; position:relative; box-shadow:0 25px 60px rgba(0,0,0,0.6); }
+  .lightbox-close { position:absolute; top:12px; right:14px; background:rgba(255,255,255,0.15); border:none; color:#fff; width:34px; height:34px; border-radius:50%; font-size:1.3rem; cursor:pointer; display:flex; align-items:center; justify-content:center; z-index:10; transition:.2s; }
+  .lightbox-close:hover { background:var(--red); }
+  .lightbox-main-img { width:100%; height:320px; background:#000; overflow:hidden; }
+  .lightbox-main-img img { width:100%; height:100%; object-fit:contain; }
+  
+  .lightbox-thumbs { display:flex; gap:10px; padding:12px 18px; background:#1e293b; overflow-x:auto; }
+  .lb-thumb { width:65px; height:65px; border-radius:10px; overflow:hidden; border:2px solid transparent; cursor:pointer; flex-shrink:0; opacity:.7; transition:.2s; }
+  .lb-thumb.active { border-color:var(--primary); opacity:1; }
+  .lb-thumb img { width:100%; height:100%; object-fit:cover; }
+
+  .lightbox-info { padding:20px; color:#fff; }
+  .lightbox-info h3 { font-size:1.3rem; margin-bottom:6px; }
+  .lightbox-tags { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:12px; }
+  .lightbox-desc { color:#cbd5e1; font-size:.88rem; line-height:1.5; margin-bottom:18px; }
+  .lightbox-foot { display:flex; align-items:center; justify-content:space-between; padding-top:14px; border-top:1px solid #334155; }
+  .lightbox-price { font-size:1.35rem; font-weight:800; color:#ffe873; }
+
+  /* KALKULATOR PACAK */
+  .calc-box { background:rgba(255,255,255,0.06); border:1.5px solid rgba(255,255,255,0.14); border-radius:22px; padding:30px 24px; margin-bottom:36px; }
+  .calc-head { text-align:center; margin-bottom:20px; }
+  .calc-head h3 { font-size:1.35rem; color:#ffe873; margin-bottom:6px; font-weight:700; }
+  .calc-head p { font-size:.88rem; color:#cbd5e1; }
+  .calc-form { display:flex; align-items:center; justify-content:center; gap:12px; flex-wrap:wrap; margin-bottom:20px; }
+  .calc-form label { font-weight:600; font-size:.92rem; }
+  .calc-form input[type="date"] { padding:10px 16px; border-radius:20px; border:1px solid #475569; background:#0f172a; color:#fff; font-family:inherit; font-size:.92rem; outline:none; }
+  .calc-results { display:none; grid-template-columns:repeat(3, 1fr); gap:16px; margin-top:18px; }
+  .calc-res-item { background:rgba(15,23,42,0.8); border:1px solid #334155; border-radius:16px; padding:16px; text-align:center; }
+  .calc-res-item small { color:#94a3b8; font-size:.78rem; display:block; margin-bottom:3px; text-transform:uppercase; font-weight:600; }
+  .calc-res-item h5 { font-size:1.05rem; color:#2ec4b6; font-weight:700; }
+  .calc-res-item p { font-size:.8rem; color:#cbd5e1; margin-top:3px; }
+  .calc-cta { text-align:center; margin-top:18px; display:none; }
+
+  /* FAQ ACCORDION */
+  section.faq-sec { padding:65px 0; background:#fff; }
+  .faq-list { max-width:820px; margin:0 auto; display:flex; flex-direction:column; gap:12px; }
+  .faq-item { border:1.5px solid #eae5dc; border-radius:16px; overflow:hidden; transition:.25s; background:#fff; }
+  .faq-item.open { border-color:var(--primary); box-shadow:0 5px 18px rgba(242,106,54,0.08); }
+  .faq-q { padding:16px 20px; cursor:pointer; display:flex; align-items:center; justify-content:space-between; font-weight:700; font-size:.98rem; user-select:none; }
+  .faq-q span.icon { font-size:1.2rem; transition:.25s; color:var(--primary); }
+  .faq-item.open .faq-q span.icon { transform:rotate(45deg); }
+  .faq-a { max-height:0; overflow:hidden; transition:max-height .3s ease, padding .3s ease; padding:0 20px; color:var(--muted); font-size:.9rem; line-height:1.55; }
+  .faq-item.open .faq-a { padding-bottom:16px; max-height:240px; }
+
+  /* TESTIMONIAL */
+  section.testi { padding:65px 0; background:linear-gradient(180deg, #fff, #fdf8f4); }
+  .testi-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+  .t-card { background:#fff; border-radius:18px; padding:22px 20px; box-shadow:0 5px 20px rgba(0,0,0,.05); transition:.3s; border:1px solid #f2ece4; }
+  .t-card:hover { transform:translateY(-4px); box-shadow:0 12px 28px rgba(0,0,0,.09); }
+  .t-stars { color:var(--amber); margin-bottom:10px; display:flex; gap:3px; }
+  .t-text { color:#475569; font-size:.9rem; margin-bottom:16px; font-style:italic; line-height:1.5; }
+  .t-user { display:flex; align-items:center; gap:12px; }
+  .t-ava { width:42px; height:42px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; color:#fff; font-size:1rem; flex-shrink:0; }
+  .t-user h4 { font-size:.92rem; font-weight:700; }
+  .t-user small { color:var(--muted); font-size:.8rem; }
+  .badge-new { background:var(--teal); color:#fff; font-size:.62rem; font-weight:700; padding:2px 7px; border-radius:20px; margin-left:5px; }
+  
+  .review-box { max-width:640px; margin:40px auto 0; background:#fff; border-radius:20px; padding:30px 24px; box-shadow:0 6px 28px rgba(0,0,0,.07); border:1px solid #f2ede5; }
+  .review-box h3 { font-size:1.25rem; text-align:center; margin-bottom:5px; font-weight:700; }
+  .review-box .sub { text-align:center; color:var(--muted); font-size:.88rem; margin-bottom:18px; }
+  .rate-stars { display:flex; justify-content:center; gap:8px; margin-bottom:18px; }
+  .rate-stars .rs { font-size:2rem; color:#e2e8f0; cursor:pointer; transition:.15s; line-height:1; }
+  .rate-stars .rs.on { color:var(--amber); transform:scale(1.08); }
+  .review-box input, .review-box textarea { width:100%; padding:11px 13px; border:1.5px solid #e6e6e6; border-radius:12px; font-family:inherit; font-size:.92rem; margin-bottom:12px; transition:.2s; }
+  .review-box input:focus, .review-box textarea:focus { outline:none; border-color:var(--primary); }
+  .review-box textarea { resize:vertical; min-height:80px; }
+  .submit-rev { width:100%; background:var(--primary); color:#fff; border:none; padding:12px; border-radius:30px; font-weight:700; font-size:.95rem; cursor:pointer; font-family:inherit; transition:.2s; display:inline-flex; align-items:center; justify-content:center; gap:8px; }
+  .submit-rev:hover { background:var(--primary-dark); transform:translateY(-2px); }
+
+  /* LOCATION */
+  .loc-sec { padding:65px 0; background:var(--cream); }
+  .loc-grid { display:grid; grid-template-columns:1fr 1.2fr; gap:28px; align-items:stretch; }
+  .loc-info { display:flex; flex-direction:column; gap:18px; justify-content:center; }
+  .loc-item { display:flex; gap:14px; align-items:flex-start; }
+  .loc-ic { flex:none; width:44px; height:44px; border-radius:12px; background:var(--primary); color:#fff; display:flex; align-items:center; justify-content:center; }
+  .loc-ic svg { width:20px; height:20px; }
+  .loc-item h4 { color:var(--dark); margin-bottom:2px; font-size:1rem; font-weight:700; }
+  .loc-item p { color:var(--muted); font-size:.9rem; line-height:1.45; }
+  .loc-map { border-radius:18px; overflow:hidden; box-shadow:0 8px 24px rgba(0,0,0,.07); min-height:300px; }
+
+  /* FOOTER */
+  footer { background:#0f172a; color:#94a3b8; padding:50px 0 20px; }
+  .foot-grid { display:grid; grid-template-columns:2fr 1fr 1fr; gap:26px; margin-bottom:26px; }
+  footer h4 { color:#fff; margin-bottom:12px; font-size:1rem; font-weight:700; }
+  footer .logo { margin-bottom:10px; }
+  footer a { color:#94a3b8; display:block; margin-bottom:7px; transition:.2s; font-size:.9rem; }
+  footer a:hover { color:#ffe873; }
+  .foot-contact a { display:flex; align-items:center; gap:8px; }
+  .foot-contact .ic-svg { font-size:1.05em; color:var(--primary); flex-shrink:0; }
+  .copy { text-align:center; border-top:1px solid #1e293b; padding-top:18px; font-size:.82rem; color:#64748b; }
+
+  /* DRAWER & CART */
+  .overlay { position:fixed; inset:0; background:rgba(0,0,0,.5); opacity:0; visibility:hidden; transition:.3s; z-index:90; }
+  .overlay.open { opacity:1; visibility:visible; }
+  .cart-drawer { position:fixed; top:0; right:0; width:430px; max-width:100%; height:100%; background:#fff; z-index:100; transform:translateX(100%); transition:.32s cubic-bezier(.4,0,.2,1); display:flex; flex-direction:column; box-shadow:-8px 0 30px rgba(0,0,0,.18); }
+  .cart-drawer.open { transform:translateX(0); }
+  .cart-head { display:flex; align-items:center; justify-content:space-between; padding:20px 20px 15px; border-bottom:1px solid #f0f0f0; }
+  .cart-head h3 { font-size:1.2rem; display:inline-flex; align-items:center; gap:8px; font-weight:700; }
+  .cart-close { background:none; border:none; font-size:1.4rem; cursor:pointer; color:var(--muted); display:inline-flex; padding:4px; }
+  .form-step { display:none; flex-direction:column; flex:1; min-height:0; }
+  .form-step.active { display:flex; }
+  .cart-items { flex:1; overflow-y:auto; padding:15px 20px; }
+  .cart-empty { text-align:center; color:var(--muted); margin-top:50px; font-size:.95rem; }
+  .cart-empty .ic-svg { font-size:2.8rem; color:#cbd5e1; display:block; margin:0 auto 10px; }
+  .ci { display:flex; align-items:center; gap:10px; padding:12px 0; border-bottom:1px solid #f4f4f4; }
+  .ci-info { flex:1; min-width:0; }
+  .ci-info h4 { font-size:.9rem; margin-bottom:2px; font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .ci-info small { color:var(--muted); font-size:.82rem; }
+  .ci-qty { display:flex; align-items:center; gap:5px; }
+  .ci-qty button { width:24px; height:24px; border:none; background:#f1f5f9; border-radius:50%; font-weight:700; cursor:pointer; color:var(--primary); }
+  .ci-qty button:hover { background:var(--primary); color:#fff; }
+  .ci-qty span { min-width:18px; text-align:center; font-weight:600; font-size:.85rem; }
+  .ci-sub { font-weight:700; color:var(--dark); min-width:68px; text-align:right; font-size:.88rem; }
+  .ci-del { background:none; border:none; color:#cbd5e1; cursor:pointer; display:inline-flex; padding:2px; }
+  .ci-del:hover { color:var(--primary); }
+  
+  .co-form { flex:1; overflow-y:auto; padding:16px 20px; }
+  .co-form label { display:block; font-weight:600; font-size:.85rem; margin:12px 0 5px; }
+  .co-form input, .co-form textarea, .co-form select { width:100%; padding:10px 13px; border:1.5px solid #e2e8f0; border-radius:12px; font-family:inherit; font-size:.9rem; transition:.2s; outline:none; }
+  .co-form input:focus, .co-form textarea:focus, .co-form select:focus { border-color:var(--primary); }
+  .co-form textarea { resize:vertical; min-height:60px; }
+  
+  .pay-opts { display:flex; flex-direction:column; gap:8px; margin-top:5px; }
+  .pay-opt { display:flex; align-items:center; gap:10px; border:1.5px solid #e2e8f0; border-radius:12px; padding:10px 12px; cursor:pointer; transition:.2s; }
+  .pay-opt:hover { border-color:var(--teal); }
+  .pay-opt input { width:auto; }
+  .pay-opt.sel { border-color:var(--primary); background:#fffaf6; }
+  .pay-opt .pd h5 { font-size:.88rem; font-weight:600; }
+  .pay-opt .pd small { color:var(--muted); font-size:.78rem; }
+  .back-link { background:none; border:none; color:var(--muted); cursor:pointer; font-size:.88rem; margin-bottom:4px; text-align:left; padding:0; font-family:inherit; display:inline-flex; align-items:center; gap:6px; }
+  .back-link:hover { color:var(--primary); }
+  .req { color:var(--primary); }
+  
+  .cart-foot { padding:16px 20px 22px; border-top:1px solid #f0f0f0; }
+  .cart-total { display:flex; justify-content:space-between; font-size:1.1rem; font-weight:700; margin-bottom:12px; }
+  .cart-total span:last-child { color:var(--primary); }
+  .checkout { width:100%; background:var(--green); color:#fff; padding:13px; border-radius:30px; font-size:.96rem; font-weight:700; border:none; cursor:pointer; transition:.2s; display:flex; align-items:center; justify-content:center; gap:8px; font-family:inherit; }
+  .checkout:hover { filter:brightness(1.06); transform:translateY(-2px); }
+  .checkout:disabled { background:#cbd5e1; cursor:not-allowed; transform:none; }
+
+  /* FLOATING WA (DESKTOP) */
+  .wa-float { position:fixed; right:20px; bottom:20px; background:var(--green); color:#fff; width:54px; height:54px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.5rem; box-shadow:0 8px 20px rgba(0,0,0,.25); z-index:60; transition:.2s; }
+  .wa-float:hover { transform:scale(1.1); }
+  .toast { position:fixed; bottom:30px; left:50%; transform:translateX(-50%) translateY(20px); background:var(--dark); color:#fff; padding:10px 20px; border-radius:30px; font-weight:600; font-size:.88rem; opacity:0; visibility:hidden; transition:.3s; z-index:120; text-align:center; max-width:90vw; }
+  .toast.show { opacity:1; visibility:visible; transform:translateX(-50%) translateY(0); }
+
+  /* BOTTOM NAVIGATION BAR MOBILE */
+  .mobile-bottom-bar { display:none; position:fixed; bottom:0; left:0; width:100%; background:#ffffff; border-top:1px solid #ede8e1; box-shadow:0 -3px 16px rgba(0,0,0,0.06); z-index:80; height:calc(60px + env(safe-area-inset-bottom, 0px)); padding-bottom:env(safe-area-inset-bottom, 0px); justify-content:space-around; align-items:center; padding-left:8px; padding-right:8px; }
+  .mb-item { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:3px; color:var(--muted); font-size:.68rem; font-weight:600; text-decoration:none; background:none; border:none; cursor:pointer; flex:1; padding:6px 0; font-family:inherit; transition:.15s; }
+  .mb-item svg { width:21px; height:21px; }
+  .mb-item.active, .mb-item:hover { color:var(--primary); }
+  .mb-badge-wrap { position:relative; display:inline-flex; }
+  .mb-badge-wrap .badge { position:absolute; top:-6px; right:-9px; background:var(--primary); color:#fff; font-size:.65rem; font-weight:700; min-width:18px; height:18px; border-radius:50%; display:flex; align-items:center; justify-content:center; border:2px solid #fff; }
+  .mb-wa { color:var(--green); }
+
+  /* MEDIA QUERIES MOBILE & TABLET */
+  @media(max-width:860px){
+    .grid { grid-template-columns:repeat(2,1fr); gap:16px; }
+    .usp-grid, .market-grid { grid-template-columns:repeat(2,1fr); }
+    .snk-grid { grid-template-columns:repeat(2,1fr); }
+    .testi-grid, .calc-results { grid-template-columns:repeat(2,1fr); }
+    .foot-grid { grid-template-columns:1fr 1fr; }
+    .hero-text h1 { font-size:2.4rem; }
+    .hero-inner { padding:50px 0; gap:30px; }
+    .hero-img img { height:320px; }
+  }
+
+  /* KHUSUS SMARTPHONE (MOBILE REFINED) */
+  @media(max-width:640px){
+    body { padding-bottom:calc(65px + env(safe-area-inset-bottom, 0px)); }
+    
+    .top-bar { font-size:.74rem; padding:6px 12px; }
+    .top-bar-inner { gap:3px 10px; }
+    .top-bar-dot { display:none; }
+
+    .nav-links { display:none; }
+    .menu-toggle { display:flex; }
+    .cart-label { display:none; }
+    .nav-cart { padding:9px 12px; border-radius:50px; gap:0; }
+    .logo { font-size:1.35rem; }
+    
+    .hero-inner { padding:36px 0 40px; text-align:center; }
+    .hero-text { min-width:100%; }
+    .hero-badge { font-size:.85rem; padding:6px 14px; margin-bottom:12px; }
+    .hero-text h1 { font-size:1.95rem; line-height:1.2; }
+    .hero-text p { font-size:.9rem; margin:0 auto 20px; }
+    .hero-btns { justify-content:center; gap:8px; }
+    .hero-btns .btn { width:100%; max-width:280px; justify-content:center; padding:11px 20px; font-size:.88rem; }
+    .hero-img { min-width:100%; margin-top:14px; }
+    .hero-img img { max-width:300px; height:240px; transform:none; border-radius:18px; }
+    
+    .stats { gap:18px 24px; padding:20px 14px; }
+    .stat h3 { font-size:1.55rem; }
+    .stat p { font-size:.78rem; }
+
+    .usp-sec { padding:20px 0; }
+    .usp-grid { grid-template-columns:1fr; gap:10px; }
+    .usp-card { padding:12px 14px; border-radius:14px; }
+    .usp-icon { width:40px; height:40px; border-radius:12px; }
+    .usp-text h4 { font-size:.9rem; }
+    .usp-text p { font-size:.78rem; }
+
+    section.catalog { padding:45px 0; }
+    .grid { grid-template-columns:repeat(2, 1fr); gap:10px; }
+    .card { border-radius:14px; }
+    .card-img { height:130px; }
+    .card-tag { font-size:.62rem; padding:2px 6px; border-radius:6px; top:6px; left:6px; }
+    .card-zoom-hint { font-size:.6rem; padding:2px 6px; bottom:6px; right:6px; }
+    .card-body { padding:10px 8px; }
+    .card-body h3 { font-size:.84rem; line-height:1.3; margin-bottom:4px; height:2.6em; overflow:hidden; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; }
+    .card-body p { display:none; }
+    .price-wrap { margin-top:4px; gap:4px; }
+    .price { font-size:.94rem; }
+    .orig-price { font-size:.74rem; }
+    
+    /* Tombol Mobile Compact */
+    .btn-row { flex-direction:column; gap:4px; margin-top:6px; }
+    .qty-row { width:100%; justify-content:space-between; gap:2px; }
+    .qty { border-radius:16px; padding:1px 3px; gap:2px; }
+    .qty button { width:20px; height:20px; font-size:.8rem; }
+    .q-val { min-width:12px; font-size:.78rem; }
+    .add-cart { padding:5px 6px; font-size:.7rem; border-radius:16px; }
+    .btn-fast-buy { width:100%; justify-content:center; padding:6px 0; font-size:.72rem; border-radius:16px; }
+    
+    .pacak-sec { padding:50px 0; }
+    .stud-card { max-width:100%; border-radius:18px; }
+    .stud-img { height:220px; }
+    .stud-body { padding:18px; }
+    .stud-body h3 { font-size:1.25rem; }
+
+    /* MARKETPLACE TITIP JUAL DI LAYAR HP (2 KOLOM RAPI) */
+    .market-sec { margin-top:38px; padding-top:30px; }
+    .market-grid { grid-template-columns:repeat(2, 1fr); gap:10px; }
+    .market-card { border-radius:16px; }
+    .market-img { height:130px; }
+    .market-body { padding:10px 8px; }
+    .market-title { font-size:.86rem; line-height:1.25; margin-bottom:4px; height:2.5em; overflow:hidden; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; }
+    .market-tags { gap:4px; margin-bottom:6px; }
+    .m-tag { font-size:.64rem; padding:2px 5px; }
+    .market-desc { display:none; }
+    .market-foot { flex-direction:column; align-items:stretch; gap:6px; padding-top:8px; }
+    .market-price { font-size:1rem; text-align:center; }
+    .btn-adopt { width:100%; justify-content:center; padding:7px 0; font-size:.75rem; border-radius:14px; }
+    
+    .snk-grid { grid-template-columns:1fr 1fr; gap:10px; }
+    .snk-item { padding:10px; border-radius:12px; }
+    .snk-item h5 { font-size:.82rem; }
+    .snk-item p { font-size:.72rem; }
+
+    .titip-box { padding:20px 14px; border-radius:16px; margin-top:20px; }
+    .titip-box h4 { font-size:1.05rem; }
+    .titip-box p { font-size:.8rem; }
+    .btn-titip { width:100%; justify-content:center; padding:10px; font-size:.84rem; }
+
+    .calc-box { padding:22px 16px; border-radius:18px; margin-bottom:28px; }
+    .calc-head h3 { font-size:1.2rem; }
+    .calc-form { flex-direction:column; align-items:stretch; gap:10px; }
+    .calc-form label { text-align:center; font-size:.88rem; }
+    .calc-form input[type="date"] { width:100%; text-align:center; padding:11px; }
+    .calc-form .btn { width:100%; justify-content:center; }
+    .calc-results { grid-template-columns:1fr; gap:10px; }
+
+    .testi-grid { grid-template-columns:1fr; gap:14px; }
+    .review-box { padding:24px 18px; border-radius:18px; margin-top:30px; }
+    .foot-grid, .loc-grid { grid-template-columns:1fr; gap:20px; }
+    .loc-sec { padding:50px 0; }
+    .sec-head h2 { font-size:1.65rem; }
+    .sec-head p { font-size:.85rem; }
+    
+    .mobile-bottom-bar { display:flex; }
+    .wa-float { display:none; }
+    .toast { bottom:78px; }
+    .cart-drawer { width:100%; max-width:100%; }
+
+    /* Lightbox Modal Mobile */
+    .lightbox-main-img { height:220px; }
+    .lb-thumb { width:52px; height:52px; }
+    .lightbox-info { padding:14px; }
+    .lightbox-info h3 { font-size:1.1rem; }
+    .lightbox-foot { flex-direction:column; align-items:stretch; gap:8px; }
+    .lightbox-price { text-align:center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- 1. TOP ANNOUNCEMENT BAR -->
+<div class="top-bar">
+  <div class="container">
+    <div class="top-bar-inner">
+      <div class="top-bar-item">
+        <span class="tb-ic">🚚</span>
+        <span id="dynTopbar1">Gratis ongkir area kota medan sekitar</span>
+      </div>
+      <span class="top-bar-dot">•</span>
+      <div class="top-bar-item">
+        <span class="tb-ic">⏰</span>
+        <span id="dynTopbar2">Buka Setiap Hari ( 08.30 - 21.00 )</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header><div class="container"><nav>
+  <div class="logo">
+    <svg class="ic-svg" xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24" fill="currentColor"><path d="M12 11c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3zm-6 2c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm12 0c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm-8.5 6.5c0 .83.67 1.5 1.5 1.5h5c.83 0 1.5-.67 1.5-1.5 0-2.5-3.5-5.5-4-5.5s-4 3-4 5.5z"/></svg>
+    <span id="dynStoreLogo">Chino's <span style="color:var(--teal)">Petshop</span></span>
+  </div>
+  
+  <div class="nav-links">
+    <a href="#katalog">Katalog Produk</a>
+    <a href="#pacak" id="navPacakLink">Jasa Pacak</a>
+    <a href="#titip-jual">Bursa Anakan 🐾</a>
+    <a href="#faq">FAQ</a>
+    <a href="#testimoni">Testimoni</a>
+    <a href="#lokasi">Lokasi</a>
+  </div>
+
+  <div class="nav-actions">
+    <button class="nav-cart" id="openCart" aria-label="Buka Keranjang">
+      <svg class="ic-svg" xmlns="http://www.w3.org/2000/svg" width="1.1em" height="1.1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+      <span class="cart-label">Keranjang</span> <span class="badge" id="badge">0</span>
+    </button>
+    <button class="menu-toggle" id="menuToggle" aria-label="Buka Menu Navigasi">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav></div></header>
+
+<!-- MOBILE MENU DRAWER -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#katalog" class="m-link">🐾 Katalog Produk Pakan</a>
+  <a href="#pacak" class="m-link">🐕 Jasa Pacak Chino</a>
+  <a href="#titip-jual" class="m-link">🐶 Titip Jual Anakan (Bursa)</a>
+  <a href="#faq" class="m-link">❓ Tanya Jawab (FAQ)</a>
+  <a href="#testimoni" class="m-link">⭐ Ulasan Pawrents</a>
+  <a href="#lokasi" class="m-link">📍 Alamat & Jam Buka</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-paw">
+    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor"><path d="M12 11c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3zm-6 2c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm12 0c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm-8.5 6.5c0 .83.67 1.5 1.5 1.5h5c.83 0 1.5-.67 1.5-1.5 0-2.5-3.5-5.5-4-5.5s-4 3-4 5.5z"/></svg>
+  </div>
+  <div class="container"><div class="hero-inner">
+    <div class="hero-text">
+      <span class="hero-badge" id="dynHeroBadge">Chino's Pethshop & Jasa Pacak</span>
+      <h1 id="dynHeroTitle">Kebutuhan Anabul <em>Lengkap & Terpercaya!</em></h1>
+      <p id="dynHeroDesc">Selamat datang di Chino's Petshop. Kami menyediakan pakan merk terpopuler, aksesoris premium, obat kutu paten, dan pejantan.</p>
+      <div class="hero-btns">
+        <a class="btn btn-accent" href="#katalog">Cari Produk</a>
+        <a class="btn btn-ghost" href="#pacak" id="btnHeroPacak">Cek Jasa Pacak</a>
+      </div>
+    </div>
+    <div class="hero-img">
+      <img id="dynHeroImg" src="./chino-dog.jpg" alt="Chino's Petshop" onerror="this.onerror=null; this.src='./chino-dog.png';">
+    </div>
+  </div></div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat"><h3>10K+</h3><p>Pesanan Terkirim</p></div>
+  <div class="stat"><h3>50+</h3><p>Puppies Lahir (Pacak)</p></div>
+  <div class="stat"><h3>4.9<span class="stat-star">★</span></h3><p>Rating Pawrents</p></div>
+  <div class="stat"><h3>100%</h3><p>Original & Terjamin</p></div>
+</div>
+
+<!-- BAR KEUNGGULAN (USP) -->
+<section class="usp-sec">
+  <div class="container">
+    <div class="usp-grid">
+      <div class="usp-card">
+        <div class="usp-icon">
+          <svg class="ic-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+        </div>
+        <div class="usp-text">
+          <h4>100% Original & Segel</h4>
+          <p>Bebas pakan oplosan / kadaluwarsa, pasokan resmi distributor.</p>
+        </div>
+      </div>
+      <div class="usp-card">
+        <div class="usp-icon">
+          <svg class="ic-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        </div>
+        <div class="usp-text">
+          <h4>Instant Delivery</h4>
+          <p>Pesanan dikirim maksimal 1x24 jam</p>
+        </div>
+      </div>
+      <div class="usp-card">
+        <div class="usp-icon">
+          <svg class="ic-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/></svg>
+        </div>
+        <div class="usp-text">
+          <h4>Jaminan Higienis & Steril</h4>
+          <p>Proses pacak aman, didampingi pawang berpengalaman</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KATALOG PRODUK (DENGAN HARGA CORET, DISKON, DAN BELI CEPAT WA) -->
+<section class="catalog" id="katalog"><div class="container">
+  <div class="sec-head">
+    <span>Katalog Lengkap Chino's Petshop</span>
+    <h2>Pilihan Produk Terbaik</h2>
+    <p>Klik foto produk untuk melihat 4 foto detail atau gunakan tombol kilat untuk beli langsung via WhatsApp.</p>
+  </div>
+
+  <div class="catalog-controls">
+    <div class="search-wrap">
+      <span class="search-icon">
+        <svg class="ic-svg" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </span>
+      <input type="text" id="prodSearch" placeholder="Cari merk pakan, aksesoris, obat kutu...">
+    </div>
+    <div class="filter-tabs">
+      <button class="ftab active" data-filter="all">Semua Produk</button>
+      <button class="ftab" data-filter="kucing">Kucing 🐱</button>
+      <button class="ftab" data-filter="anjing">Anjing 🐶</button>
+      <button class="ftab" data-filter="aksesoris">Aksesoris 🎒</button>
+      <button class="ftab" data-filter="kesehatan">Vitamin & Obat 💊</button>
+    </div>
+  </div>
+
+  <div class="grid" id="productGrid"></div>
+  <div class="not-found" id="notFound">🐾 Maaf, produk yang Anda cari tidak ditemukan. Coba kata kunci lain.</div>
+</div></section>
+
+<!-- JASA PACAK SECTION -->
+<section class="pacak-sec" id="pacak"><div class="container">
+  <div class="sec-head">
+    <span>Breeding Center</span>
+    <h2>Jasa Pacak Anjing</h2>
+    <p>Pejantan tangguh , Garansi pacak ulang jika betina tidak hamil.</p>
+  </div>
+
+  <!-- KALKULATOR SIKLUS LOOP -->
+  <div class="calc-box">
+    <div class="calc-head">
+      <h3>📅 Kalkulator Masa Subur & Siklus Pacak Anjing Betina</h3>
+      <p>Pilih tanggal pertama kali betina Anda mulai berdarah (loop/proestrus) untuk menghitung hari pacak yang paling tepat.</p>
+    </div>
+    <div class="calc-form">
+      <label for="loopDate">Hari Pertama Loop:</label>
+      <input type="date" id="loopDate">
+      <button class="btn btn-accent" id="btnCalc">Hitung Jadwal Pacak</button>
+    </div>
+    <div class="calc-results" id="calcResults">
+      <div class="calc-res-item">
+        <small>Periode Masa Subur (Estrogen Peak)</small>
+        <h5 id="fertileWindow">-</h5>
+        <p>Hari ke-9 s/d ke-13 setelah hari pertama loop.</p>
+      </div>
+      <div class="calc-res-item">
+        <small>Jadwal Pacak 1 & 2 (Paling Optimal)</small>
+        <h5 id="matingDates">-</h5>
+        <p>Selang waktu 48 jam untuk memaksimalkan pembuahan.</p>
+      </div>
+      <div class="calc-res-item">
+        <small>Estimasi Kelahiran Puppies</small>
+        <h5 id="dueDate">-</h5>
+        <p>Sekitar 63 hari setelah hari pacak pertama.</p>
+      </div>
+    </div>
+    <div class="calc-cta" id="calcCta">
+      <a class="btn btn-accent" id="btnWaCalc" href="#" target="_blank">Konsultasikan Jadwal Ini ke WhatsApp Kami &raquo;</a>
+    </div>
+  </div>
+
+  <!-- KARTU PEJANTAN CHINO -->
+  <div class="pacak-grid">
+    <div class="stud-card" id="studCardContainer">
+      <div class="stud-img">
+        <img id="dynStudImg" src="./chino-dog.jpg" alt="Pacak Shih Tzu Chino" onerror="this.onerror=null; this.src='./chino-dog.png';">
+      </div>
+      <div class="stud-body">
+        <h3 id="dynStudName">"Chino"</h3>
+        <div class="stud-breed" id="dynStudBreed">Shih Tzu (Pejantan Tangguh)</div>
+        <ul class="stud-features" id="dynStudFeatures">
+          <li><svg class="ic-svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Ukuran mini glamour</li>
+          <li><svg class="ic-svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Muka pesek bulat seperti teddy bear</li>
+          <li><svg class="ic-svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Bulu kapas mekar tebal & sangat aktif</li>
+        </ul>
+        <div class="stud-price" id="dynStudPrice">Rp 800.000 <small style="font-size:.8rem; font-weight:400; color:#94a3b8;">/ 2x Pacak</small></div>
+        <a class="btn-pacak" id="dynStudBtn" href="https://wa.me/6285161414172?text=Halo%20Chino's%20Petshop,%20saya%20mau%20booking%20Jasa%20Pacak%20Shih%20Tzu%20(Chino)" target="_blank">Booking Pacak via WA &raquo;</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= BURSA TITIP JUAL ANAKAN (DENGAN FILTER & 4 FOTO POPUP) ================= -->
+  <div class="market-sec" id="titip-jual">
+    <div class="sec-head" style="margin-bottom:15px;">
+      <span>Bursa & Titip Jual Resmi</span>
+      <h3 style="font-size:1.85rem; color:#fff; font-weight:800; margin-top:5px;">Bursa Titip Jual Anakan Anjing & Kucing 🐾</h3>
+      <p style="color:#cbd5e1; font-size:.92rem; max-width:640px; margin:6px auto 0;">Klik foto untuk melihat 4 foto detail & zoom anakan. Dapatkan anakan sehat dan terawat langsung dari pemilik terpercaya.</p>
+    </div>
+
+    <!-- FILTER TAB BURSA (FITUR NO. 1) -->
+    <div class="bursa-tabs">
+      <button class="btab active" data-bursa="all">Semua Anakan</button>
+      <button class="btab" data-bursa="anjing">Anjing 🐶</button>
+      <button class="btab" data-bursa="kucing">Kucing 🐱</button>
+    </div>
+
+    <!-- DAFTAR LISTING BURSA ANAKAN -->
+    <div class="market-grid" id="marketGrid"></div>
+
+    <!-- SYARAT & KETENTUAN TITIP JUAL (FITUR NO. 3) -->
+    <div class="snk-box">
+      <div class="snk-head">
+        <span style="font-size:1.6rem;">📋</span>
+        <h4>Syarat & Ketentuan Titip Jual di Chino's Petshop</h4>
+      </div>
+      <div class="snk-grid">
+        <div class="snk-item">
+          <span class="snk-num">1</span>
+          <h5>Usia Minimal 2 Bulan</h5>
+          <p>Anakan wajib sudah lepas ASI, bisa makan makanan kering/basah sendiri secara mandiri.</p>
+        </div>
+        <div class="snk-item">
+          <span class="snk-num">2</span>
+          <h5>Sehat Bebas Penyakit</h5>
+          <p>Wajib bebas kutu, jamur, sudah minum obat cacing, dan diutamakan sudah vaksin 1x.</p>
+        </div>
+        <div class="snk-item">
+          <span class="snk-num">3</span>
+          <h5>Foto & Video Asli</h5>
+          <p>Kirimkan minimal 4 foto jernih & video keaktifan anakan tanpa editan berlebihan.</p>
+        </div>
+        <div class="snk-item">
+          <span class="snk-num">4</span>
+          <h5>Amanah & Transparan</h5>
+          <p>Pembayaran dan adopsi dipantau langsung agar pembeli dan pemilik sama-sama aman.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- KOTAK CALL TO ACTION DAFTAR TITIP JUAL -->
+    <div class="titip-box">
+      <h4>Punya Anakan Anjing atau Kucing Lucu yang Mau Dijual?</h4>
+      <p>Titipkan di web Chino's Petshop! Kami bantu pasarkan ke ribuan calon adopter terpercaya di Kota Medan dan sekitarnya.</p>
+      <a class="btn-titip" href="https://wa.me/6285161414172?text=Halo%20Chino's%20Petshop,%20saya%20mau%20titip%20jual%20anakan%20anjing/kucing%20saya%20di%20web" target="_blank">
+        <svg class="ic-svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+        Daftar Titip Jual via WhatsApp
+      </a>
+    </div>
+  </div>
+
+</div></section>
+
+<!-- FAQ SECTION -->
+<section class="faq-sec" id="faq"><div class="container">
+  <div class="sec-head">
+    <span>Tanya Jawab</span>
+    <h2>Frequently Asked Questions</h2>
+    <p>Pertanyaan umum seputar produk pakan, obat kutu, dan layanan titip jual anakan.</p>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q">Bagaimana cara menitipkan anakan anjing/kucing di web Chino's? <span class="icon">+</span></div>
+      <div class="faq-a">Cukup hubungi WhatsApp admin kami dengan mengirimkan 4 foto anakan yang jelas, jenis ras, usia, jenis kelamin, riwayat vaksin, serta harga yang diinginkan. Tim kami akan mengkurasi sebelum ditampilkan di web.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Apakah semua anakan yang dijual dijamin sehat? <span class="icon">+</span></div>
+      <div class="faq-a">Ya. Semua anakan yang dititipkan wajib memenuhi standar kesehatan Chino's Petshop: sudah bebas kutu, sudah obat cacing rutin, dan kondisi lincah serta nafsu makan baik.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Apakah pakan hewan di Chino's Petshop dijamin original? <span class="icon">+</span></div>
+      <div class="faq-a">Ya, 100% original. Kami hanya mengambil pasokan langsung dari distributor resmi (Royal Canin, Whiskas, Pedigree, dll.). Semua kemasan adalah fresh pack tersegel rapi, bukan repack oplosan.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Bagaimana cara menentukan dosis pemakaian obat kutu Detick? <span class="icon">+</span></div>
+      <div class="faq-a">Obat tetes Detick botol 1ml digunakan untuk berat anabul 1 - 10 kg. Teteskan langsung pada kulit di tengkuk leher. Jangan dimandikan selama 48 jam sebelum dan sesudah penetesan.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Berapa lama estimasi pengiriman pesanan pakan sampai ke rumah? <span class="icon">+</span></div>
+      <div class="faq-a">Untuk kurir Instant (GoSend/Grab) sampai dalam 1-3 jam. Pengiriman reguler berkisar 1-2 hari kerja untuk area kota Medan dan sekitarnya.</div>
+    </div>
+  </div>
+</div></section>
+
+<!-- TESTIMONI -->
+<section class="testi" id="testimoni"><div class="container">
+  <div class="sec-head">
+    <span>Cerita Pelanggan</span>
+    <h2>Apa Kata Mereka?</h2>
+    <p>Kepuasan belanja dan layanan profesional kami dari pelanggan setia.</p>
+  </div>
+  <div class="testi-grid" id="testiGrid">
+    <div class="t-card">
+      <div class="t-stars">★★★★★</div>
+      <p class="t-text">"Titip jual anakan Toy Poodle saya lewat web Chino's cepat banget lakunya! Dalam 3 hari udah dapet adopter baru yang sayang anabul. Fotonya jelas banget ada 4 foto jadi pembeli langsung percaya."</p>
+      <div class="t-user"><div class="t-ava" style="background:#f26a36">RW</div><div><h4>Rendy Wijaya</h4><small>Breeder Medan</small></div></div>
+    </div>
+    <div class="t-card">
+      <div class="t-stars">★★★★★</div>
+      <p class="t-text">"Pesan pakan via tombol Beli WA praktis banget! Cuma klik sekali langsung terkirim pesanan ke admin, 2 jam kemudian pakan kucing Bolt udah sampai depan pintu."</p>
+      <div class="t-user"><div class="t-ava" style="background:#2ec4b6">SN</div><div><h4>Siti Nurhaliza</h4><small>Owner 2 Kucing</small></div></div>
+    </div>
+    <div class="t-card">
+      <div class="t-stars">★★★★★</div>
+      <p class="t-text">"Fitur kalkulator siklus loop di website ini ngebantu banget! Jadi tahu persis kapan waktu paling pas buat bawa betina pacak ke Chino Shih Tzu."</p>
+      <div class="t-user"><div class="t-ava" style="background:#f59e0b">CL</div><div><h4>Clara Levina</h4><small>Pelanggan Setia</small></div></div>
+    </div>
+  </div>
+
+  <div class="review-box">
+    <h3>Beri Rating & Pengalaman Anda</h3>
+    <p class="sub">Bagikan kepuasan belanja Anda bersama kami!</p>
+    <div class="rate-stars" id="rateStars">
+      <span class="rs" data-v="1">★</span><span class="rs" data-v="2">★</span><span class="rs" data-v="3">★</span><span class="rs" data-v="4">★</span><span class="rs" data-v="5">★</span>
+    </div>
+    <input type="text" id="revName" placeholder="Nama Anda (cth: Sarah Pratama)">
+    <textarea id="revText" placeholder="Ceritakan pengalaman Anda di sini..."></textarea>
+    <button class="submit-rev" id="submitRev">Kirim Ulasan</button>
+  </div>
+</div></section>
+
+<!-- LOKASI & KONTAK -->
+<section id="lokasi" class="loc-sec">
+  <div class="container">
+    <div class="sec-head">
+      <h2>Kunjungi Toko Kami</h2>
+      <p>Kunjungi toko langsung atau pesan online untuk dikirim langsung ke rumah!</p>
+    </div>
+    <div class="loc-grid">
+      <div class="loc-info">
+        <div class="loc-item">
+          <span class="loc-ic">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          </span>
+          <div>
+            <h4>Alamat Toko</h4>
+            <p id="dynAddress">Jl. Melati Raya No. 45<br>Kota Medan (Bersih & Nyaman)</p>
+          </div>
+        </div>
+        <div class="loc-item">
+          <span class="loc-ic">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </span>
+          <div>
+            <h4>Jam Operasional</h4>
+            <p id="dynHours">Buka Setiap Hari: 08.30 – 21.00 WIB</p>
+          </div>
+        </div>
+        <div class="loc-item">
+          <span class="loc-ic">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
+          </span>
+          <div>
+            <h4>WhatsApp Customer Care</h4>
+            <p id="dynPhoneText">0851-6141-4172</p>
+          </div>
+        </div>
+        <a class="btn btn-accent" href="https://maps.google.com" target="_blank" style="margin-top:8px; display:inline-block;">Buka di Google Maps</a>
+      </div>
+      <div class="loc-map">
+        <iframe src="https://www.google.com/maps?q=Medan&output=embed" width="100%" height="100%" style="border:0; min-height:300px; border-radius:18px;" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="kontak"><div class="container">
+  <div class="foot-grid">
+    <div>
+      <div class="logo" style="color:#fff;" id="dynFootLogo">Chino's <span style="color:var(--teal)">Petshop</span></div>
+      <p id="dynFootDesc">Tempat belanja kebutuhan anabul berkualitas tinggi, terlengkap, dan terpercaya dengan pelayanan ramah serta pengiriman cepat.</p>
+    </div>
+    <div>
+      <h4>Navigasi</h4>
+      <a href="#katalog">Katalog Produk</a>
+      <a href="#pacak" id="footPacakLink">Jasa Pacak</a>
+      <a href="#titip-jual">Titip Jual Anakan</a>
+      <a href="#faq">FAQ</a>
+      <a href="#testimoni">Ulasan Pelanggan</a>
+    </div>
+    <div class="foot-contact">
+      <h4>Hubungi Kami</h4>
+      <a id="dynFootWa" href="https://wa.me/6285161414172" target="_blank"><span id="dynFootWaText">0851-6141-4172</span> (WhatsApp)</a>
+      <a href="#" id="dynFootHours">Buka Setiap Hari: 08.30 – 21.00 WIB</a>
+      <a href="#" id="dynFootAddress">Jl. Melati Raya No. 45, Kota Medan</a>
+    </div>
+  </div>
+  <div class="copy" id="dynCopyright">
+    © 2026 Chino's Petshop. Dibuat dengan cinta untuk pelanggan setia 🐾
+  </div>
+</div></footer>
+
+<!-- FLOATING WHATSAPP -->
+<a class="wa-float" id="dynWaFloat" href="https://wa.me/6285161414172" target="_blank" title="Chat WhatsApp">
+  <svg xmlns="http://www.w3.org/2000/svg" width="1.4em" height="1.4em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+</a>
+
+<!-- BOTTOM NAVIGATION BAR MOBILE -->
+<div class="mobile-bottom-bar">
+  <a href="#" class="mb-item active">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    <span>Beranda</span>
+  </a>
+  <a href="#katalog" class="mb-item">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <span>Katalog</span>
+  </a>
+  <a href="#titip-jual" class="mb-item">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+    <span>Bursa</span>
+  </a>
+  <button class="mb-item" id="openCartMobile">
+    <div class="mb-badge-wrap">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+      <span class="badge" id="badgeMobile">0</span>
+    </div>
+    <span>Keranjang</span>
+  </button>
+  <a id="dynMbWa" href="https://wa.me/6285161414172" target="_blank" class="mb-item mb-wa">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+    <span>WhatsApp</span>
+  </a>
+</div>
+
+<!-- CART DRAWER -->
+<div class="overlay" id="overlay"></div>
+<aside class="cart-drawer" id="cartDrawer">
+  <div class="cart-head">
+    <h3 id="drawerTitle">Keranjang Belanja</h3>
+    <button class="cart-close" id="closeCart">&times;</button>
+  </div>
+  
+  <div class="form-step active" id="stepCart">
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-foot">
+      <div class="cart-total"><span>Total</span><span id="cartTotal">Rp 0</span></div>
+      <button class="checkout" id="toForm" disabled>Lanjut ke Data Pemesan &raquo;</button>
+    </div>
+  </div>
+
+  <div class="form-step" id="stepForm">
+    <div class="co-form">
+      <button class="back-link" id="backToCart">&larr; Kembali ke Keranjang</button>
+      
+      <label>Nama Penerima / Pemesan <span class="req">*</span></label>
+      <input type="text" id="custName" placeholder="Contoh: Sarah Pratama">
+      
+      <label>No. HP / WhatsApp <span class="req">*</span></label>
+      <input type="tel" id="custPhone" placeholder="Contoh: 08123456789">
+      
+      <label>Metode Pengiriman / Kurir <span class="req">*</span></label>
+      <select id="custShip">
+        <option value="Instant (GoSend / GrabExpress) — 1-3 Jam">Instant (GoSend / GrabExpress) — 1-3 Jam</option>
+        <option value="Next Day (Paxel / JNE YES) — Tiba Besok">Next Day (Paxel / JNE YES) — Tiba Besok</option>
+        <option value="Reguler (JNE / SiCepat / J&T) — 1-3 Hari">Reguler (JNE / SiCepat / J&T) — 1-3 Hari</option>
+        <option value="Ambil Langsung di Toko (Self Pick-Up)">Ambil Langsung di Toko (Self Pick-Up)</option>
+      </select>
+
+      <label>Alamat Pengiriman Lengkap <span class="req">*</span></label>
+      <textarea id="custAddr" placeholder="Jalan, Nomor Rumah, RT/RW, Kecamatan, Patokan"></textarea>
+      
+      <label>Metode Pembayaran <span class="req">*</span></label>
+      <div class="pay-opts">
+        <label class="pay-opt"><input type="radio" name="pay" value="Bayar di Tempat (COD)"><div class="pd"><h5>Bayar di Tempat (COD)</h5><small>Bayar saat pesanan tiba</small></div></label>
+        <label class="pay-opt"><input type="radio" name="pay" value="QRIS"><div class="pd"><h5>QRIS</h5><small>Scan e-wallet / BCA / GoPay / OVO</small></div></label>
+        <label class="pay-opt"><input type="radio" name="pay" value="Transfer Bank"><div class="pd"><h5>Transfer Bank</h5><small>No rekening dikirim via chat WhatsApp</small></div></label>
+      </div>
+    </div>
+    <div class="cart-foot">
+      <div class="cart-total"><span>Total</span><span id="cartTotal2">Rp 0</span></div>
+      <button class="checkout" id="checkout">Kirim Pesanan ke WhatsApp &raquo;</button>
+    </div>
+  </div>
+</aside>
+
+<!-- ================= MODAL LIGHTBOX FOTO DETAIL (4 FOTO) ================= -->
+<div class="lightbox-modal" id="lightboxModal">
+  <div class="lightbox-box">
+    <button class="lightbox-close" id="closeLightbox">&times;</button>
+    
+    <div class="lightbox-main-img">
+      <img id="lbMainImg" src="" alt="Detail Foto">
+    </div>
+    
+    <!-- 4 THUMBNAILS YANG BISA DIKLIK -->
+    <div class="lightbox-thumbs" id="lbThumbContainer"></div>
+    
+    <div class="lightbox-info">
+      <h3 id="lbTitle">Nama Item</h3>
+      <div class="lightbox-tags" id="lbTags"></div>
+      <p class="lightbox-desc" id="lbDesc">Deskripsi detail item...</p>
+      <div class="lightbox-foot">
+        <div class="lightbox-price" id="lbPrice">Rp 0</div>
+        <a class="btn-adopt" id="lbActionBtn" href="#" target="_blank">Hubungi via WhatsApp &raquo;</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<!-- ================= SCRIPT MURNI STANDALONE LENGKAP ================= -->
+<script>
+  // 1. DATA DEFAULT CHINO'S PETSHOP (LENGKAP DENGAN 4 FOTO & HARGA CORET)
+  var FALLBACK_STORE = {
+    name: "Chino's Petshop",
+    wa: "6285161414172",
+    topbar1: "Gratis ongkir area kota medan sekitar",
+    topbar2: "Buka Setiap Hari ( 08.30 - 21.00 )",
+    address: "Jl. Melati Raya No. 45, Kota Medan",
+    hours: "Buka Setiap Hari: 08.30 – 21.00 WIB",
+    heroBadge: "Chino's Pethshop & Jasa Pacak",
+    heroDesc: "Selamat datang di Chino's Petshop. Kami menyediakan pakan merk terpopuler, aksesoris premium, obat kutu paten, dan pejantan.",
+    stud: {
+      name: '"Chino"',
+      breed: "Shih Tzu (Pejantan Tangguh)",
+      price: 800000,
+      img: "./chino-dog.jpg",
+      features: "Ukuran mini glamour, Muka pesek bulat seperti teddy bear, Bulu kapas mekar tebal & sangat aktif"
+    },
+    // LISTING BURSA ANAKAN (MINIMAL 4 FOTO PER ITEM)
+    bursa: [
+      {
+        id: "bursa_1",
+        type: "anjing",
+        title: "Toy Poodle Red Glamour (Super Mini)",
+        breed: "Toy Poodle",
+        age: "2 Bulan",
+        gender: "Jantan",
+        status: "Siap Adopsi",
+        statusClass: "status-ready",
+        price: 2500000,
+        vaccine: "Vaksin E4",
+        images: [
+          "https://images.unsplash.com/photo-1591769225440-811ad7d6eca3?w=800&auto=format&fit=crop&q=80",
+          "https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=800&auto=format&fit=crop&q=80",
+          "https://images.unsplash.com/photo-1583337130417-3346a1be7dee?w=800&auto=format&fit=crop&q=80",
+          "https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?w=800&auto=format&fit=crop&q=80"
+        ],
+        desc: "Warna red pekat glamour, bulu keriting padat mekar, manja, lincah, bebas kutu, dan obat cacing teratur."
+      },
+      {
+        id: "bursa_2",
+        type: "anjing",
+        title: "Shih Tzu Mini Teddy Bear Face",
+        breed: "Shih Tzu",
+        age: "2.5 Bulan",
+        gender: "Betina",
+        status: "Siap Adopsi",
+        statusClass: "status-ready",
+        price: 1800000,
+        vaccine: "Vaksin 1x",
+        images: [
+          "https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=800&auto=format&fit=crop&q=80",
+          "https://images.unsplash.com/photo-1591769225440-811ad7d6eca3?w=800&auto=format&fit=crop&q=80",
+          "./chino-dog.jpg",
+          "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=800&auto=format&fit=crop&q=80"
+        ],
+        desc: "Muka pesek bulat seperti boneka, bulu kapas tebal tiga warna simetris, nafsu makan sangat lahap."
+      },
+      {
+        id: "bursa_3",
+        type: "anjing",
+        title: "Pomeranian Super Mini Snow White",
+        breed: "Pomeranian",
+        age: "2 Bulan",
+        gender: "Jantan",
+        status: "Siap Adopsi",
+        statusClass: "status-ready",
+        price: 2200000,
+        vaccine: "Vaksin E4",
+        images: [
+          "https://images.unsplash.com/photo-1583337130417-3346a1be7dee?w=800&auto=format&fit=crop&q=80",
+          "https://images.unsplash.com/photo-1546975490-e8b92a360b24?w=800&auto=format&fit=crop&q=80",
+          "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=800&auto=format&fit=crop&q=80",
+          "https://images.unsplash.com/photo-1552053831-71594a27632d?w=800&auto=format&fit=crop&q=80"
+        ],
+        desc: "Bulu putih salju lebat mekar tebal, moncong pesek teddy bear, karakter periang dan sangat aktif."
+      },
+      {
+        id: "bursa_4",
+        type: "kucing",
+        title: "Kucing British Shorthair Bicolor",
+        breed: "British Shorthair",
+        age: "2.5 Bulan",
+        gender: "Betina",
+        status: "Siap Adopsi",
+        statusClass: "status-ready",
+        price: 3200000,
+        vaccine: "Vaksin F4",
+        images: [
+          "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=800&auto=format&fit=crop&q=80",
+          "https://images.unsplash.com/photo-1574158622682-e40e69881006?w=800&auto=format&fit=crop&q=80",
+          "https://images.unsplash.com/photo-1533738363-b7f9aef128ce?w=800&auto=format&fit=crop&q=80",
+          "https://images.unsplash.com/photo-1561948955-570b270e7c36?w=800&auto=format&fit=crop&q=80"
+        ],
+        desc: "Pipi tembam bulat lucu, tulang besar padat, bulu karpet velvet halus, pintar buang air di litter box."
+      }
+    ],
+    // PRODUK PAKAN & AKSESORIS (DILENGKAPI 4 FOTO & HARGA CORET)
+    products: [
+      { 
+        name: "Royal Canin Kitten (400g)", 
+        cat: "makanan", pet: "kucing", 
+        origPrice: 95000, price: 82000, 
+        tag: "Kucing • Premium", 
+        images: [
+          "https://images.unsplash.com/photo-1574158622682-e40e69881006?w=600&auto=format&fit=crop&q=80",
+          "https://images.unsplash.com/photo-1589924691995-400dc9ecc119?w=600&auto=format&fit=crop&q=80",
+          "https://images.unsplash.com/photo-1548767797-d8c844163c4c?w=600&auto=format&fit=crop&q=80",
+          "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=600&auto=format&fit=crop&q=80"
+        ], 
+        desc: "Nutrisi lengkap anak kucing usia 4-12 bulan, perkuat antibodi dan pencernaan sensitif." 
+      },
+      { 
+        name: "Whiskas Ocean Fish Adult (480g)", 
+        cat: "makanan", pet: "kucing", 
+        origPrice: 45000, price: 38000, 
+        tag: "Kucing • Best Seller", 
+        images: [
+          "https://images.unsplash.com/photo-1589924691995-400dc9ecc119?w=600&auto=format&fit=crop&q=80",
+          "https://images.unsplash.com/photo-1574158622682-e40e69881006?w=600&auto=format&fit=crop&q=80",
+          "https://images.unsplash.com/photo-1548767797-d8c844163c4c?w=600&auto=format&fit=crop&q=80",
+          "https://images.unsplash.com/photo-1561948955-570b270e7c36?w=600&auto=format&fit=crop&q=80"
+        ], 
+        desc: "Kibble renyah isi ikan laut gurih dengan omega 3 & 6 untuk bulu halus berkilau." 
+      },
+      { 
+        name: "Bolt Cat Food Salmon (1 kg)", 
+        cat: "makanan", pet: "kucing", 
+        origPrice: 28000, price: 23000, 
+        tag: "Kucing • Hemat", 
+        images: [
+          "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=600&auto=format&fit=crop&q=80",
+          "https://images.unsplash.com/photo-1574158622682-e40e69881006?w=600&auto=format&fit=crop&q=80",
+          "https://images.unsplash.com/photo-1533738363-b7f9aef128ce?w=600&auto=format&fit=crop&q=80",
+          "https://images.unsplash.com/photo-1589924691995-400dc9ecc119?w=600&auto=format&fit=crop&q=80"
+        ], 
+        desc: "Pakan ekonomis terpopuler dengan kibble bentuk ikan dan donat, kurangi risiko FLUTD." 
+      },
+      { 
+        name: "Pedigree Adult Beef & Veg (500g)", 
+        cat: "makanan", pet: "anjing", 
+        origPrice: 50000, price: 42000, 
+        tag: "Anjing • Best Seller", 
+        images: [
+          "https://images.unsplash.com/photo-1568640347023-a616a30bc3bd?w=600&auto=format&fit=crop&q=80",
+          "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=600&auto=format&fit=crop&q=80",
+          "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=600&auto=format&fit=crop&q=80",
+          "https://images.unsplash.com/photo-1552053831-71594a27632d?w=600&auto=format&fit=crop&q=80"
+        ], 
+        desc: "Makanan anjing dewasa terfavorit dengan daging sapi dan sayuran untuk tulang serta gigi kuat." 
+      },
+      { 
+        name: "Pro Plan Adult Optiderma (1kg)", 
+        cat: "makanan", pet: "anjing", 
+        origPrice: 155000, price: 135000, 
+        tag: "Anjing • Premium", 
+        images: [
+          "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=600&auto=format&fit=crop&q=80",
+          "https://images.unsplash.com/photo-1568640347023-a616a30bc3bd?w=600&auto=format&fit=crop&q=80",
+          "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=600&auto=format&fit=crop&q=80",
+          "https://images.unsplash.com/photo-1552053831-71594a27632d?w=600&auto=format&fit=crop&q=80"
+        ], 
+        desc: "Formula gizi tinggi untuk anjing dengan kulit sensitif dan bulu rontok, standar veteriner." 
+      },
+      { 
+        name: "Detick Obat Kutu Tetes (1-10kg)", 
+        cat: "kesehatan", pet: "kucing anjing", 
+        origPrice: 30000, price: 24000, 
+        tag: "Obat Kutu • Tetes", 
+        images: [
+          "https://images.unsplash.com/photo-1583337130417-3346a1be7dee?w=600&auto=format&fit=crop&q=80",
+          "https://images.unsplash.com/photo-1534361960057-19889db9621e?w=600&auto=format&fit=crop&q=80",
+          "https://images.unsplash.com/photo-1518791841217-8f162f1e1131?w=600&auto=format&fit=crop&q=80",
+          "https://images.unsplash.com/photo-1576201836106-db1758fd1c97?w=600&auto=format&fit=crop&q=80"
+        ], 
+        desc: "Obat tetes tengkuk ampuh basmi kutu, caplak, dan tungau pada anjing & kucing dalam 24 jam." 
+      }
+    ]
+  };
+
+  // 2. CEK LOCALSTORAGE DARI ADMIN.HTML
+  var activeConfig = FALLBACK_STORE;
+  try {
+    var storedLive = localStorage.getItem("chinos_live_config") || localStorage.getItem("dev_store_chinos");
+    if(storedLive){
+      activeConfig = JSON.parse(storedLive);
+      if(!activeConfig.bursa) activeConfig.bursa = FALLBACK_STORE.bursa;
+    }
+  } catch(e){}
+
+  var WA_NUMBER = activeConfig.wa || "6285161414172";
+  var rupiah = function(n){ return "Rp " + Number(n).toLocaleString("id-ID"); };
+
+  function formatLogo(str){
+    var parts = (str || "Chino's Petshop").trim().split(" ");
+    if(parts.length > 1){
+      var lastWord = parts.pop();
+      return parts.join(" ") + ' <span style="color:var(--teal)">' + lastWord + '</span>';
+    }
+    return str;
+  }
+
+  // 3. TERAPKAN DATA KE HALAMAN
+  function applyStoreConfig(cfg){
+    document.title = cfg.name + " — " + (cfg.heroBadge || "Toko Online");
+    
+    if(cfg.topbar1) document.getElementById("dynTopbar1").textContent = cfg.topbar1;
+    if(cfg.topbar2) document.getElementById("dynTopbar2").textContent = cfg.topbar2;
+    
+    document.getElementById("dynStoreLogo").innerHTML = formatLogo(cfg.name);
+    document.getElementById("dynFootLogo").innerHTML = formatLogo(cfg.name);
+    
+    if(cfg.heroBadge) document.getElementById("dynHeroBadge").textContent = cfg.heroBadge;
+    if(cfg.heroDesc) document.getElementById("dynHeroDesc").textContent = cfg.heroDesc;
+    
+    if(cfg.address){
+      document.getElementById("dynAddress").textContent = cfg.address;
+      document.getElementById("dynFootAddress").textContent = cfg.address;
+    }
+    if(cfg.hours){
+      document.getElementById("dynHours").textContent = cfg.hours;
+      document.getElementById("dynFootHours").textContent = cfg.hours;
+    }
+    
+    WA_NUMBER = cfg.wa || "6285161414172";
+    var waUrl = "https://wa.me/" + WA_NUMBER;
+    document.getElementById("dynPhoneText").textContent = "+" + WA_NUMBER;
+    document.getElementById("dynFootWaText").textContent = "+" + WA_NUMBER;
+    document.getElementById("dynFootWa").href = waUrl;
+    document.getElementById("dynWaFloat").href = waUrl;
+    document.getElementById("dynMbWa").href = waUrl;
+
+    // Pejantan Pacak
+    var pacakSec = document.getElementById("pacak");
+    if(cfg.stud && cfg.stud.name){
+      pacakSec.style.display = "block";
+      document.getElementById("dynStudName").textContent = cfg.stud.name;
+      document.getElementById("dynStudBreed").textContent = cfg.stud.breed;
+      document.getElementById("dynStudPrice").innerHTML = rupiah(cfg.stud.price) + ' <small style="font-size:.8rem; font-weight:400; color:#94a3b8;">/ 2x Pacak</small>';
+      if(cfg.stud.img) document.getElementById("dynStudImg").src = cfg.stud.img;
+      
+      if(cfg.stud.features){
+        var feats = cfg.stud.features.split(",").map(function(s){ return s.trim(); }).filter(Boolean);
+        document.getElementById("dynStudFeatures").innerHTML = feats.map(function(f){
+          return '<li><svg class="ic-svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> ' + f + '</li>';
+        }).join("");
+      }
+      document.getElementById("dynStudBtn").href = "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent("Halo " + cfg.name + ", saya mau booking Jasa Pacak " + cfg.stud.name);
+    }
+
+    renderProductsGrid(cfg.products || FALLBACK_STORE.products);
+    renderMarketGrid(cfg.bursa || FALLBACK_STORE.bursa);
+  }
+
+  // 4. RENDER PRODUK (DENGAN HARGA CORET & 4 FOTO ZOOM)
+  function renderProductsGrid(list){
+    var grid = document.getElementById("productGrid");
+    grid.innerHTML = list.map(function(p, idx){
+      var mainImg = (p.images && p.images[0]) || p.img || './chino-dog.jpg';
+      var discTag = "";
+      var origPriceHtml = "";
+      if(p.origPrice && p.origPrice > p.price){
+        var pct = Math.round(((p.origPrice - p.price) / p.origPrice) * 100);
+        origPriceHtml = '<span class="orig-price">' + rupiah(p.origPrice) + '</span>';
+        discTag = '<span class="disc-badge">-' + pct + '%</span>';
+      }
+
+      var fastWaText = encodeURIComponent("Halo Chino's Petshop, saya ingin langsung beli produk: " + p.name + " (" + rupiah(p.price) + "). Apakah stok masih tersedia?");
+
+      return '<div class="card" data-cat="'+p.cat+'" data-pet="'+(p.pet || '')+'">'+
+        '<div class="card-img" onclick="openProductLightbox('+idx+')">'+
+          '<span class="card-tag">'+p.tag+'</span>'+
+          '<img src="'+mainImg+'" alt="'+p.name+'" loading="lazy" onerror="this.src=\'./chino-dog.jpg\'">'+
+          '<span class="card-zoom-hint">🔍 4 Foto</span>'+
+        '</div>'+
+        '<div class="card-body">'+
+          '<div>'+
+            '<h3 onclick="openProductLightbox('+idx+')">'+p.name+'</h3>'+
+            '<p>'+p.desc+'</p>'+
+          '</div>'+
+          '<div class="card-foot-wrap">'+
+            '<div class="price-wrap">'+
+              origPriceHtml +
+              '<span class="price">'+rupiah(p.price)+'</span>' +
+              discTag +
+            '</div>'+
+            '<div class="btn-row">'+
+              '<div class="qty-row">'+
+                '<div class="qty"><button class="q-minus">−</button><span class="q-val">1</span><button class="q-plus">+</button></div>'+
+                '<button class="add-cart" data-name="'+p.name+'" data-price="'+p.price+'">Tambah</button>'+
+              '</div>'+
+              '<a class="btn-fast-buy" href="https://wa.me/'+WA_NUMBER+'?text='+fastWaText+'" target="_blank">'+
+                '⚡ Beli WA'+
+              '</a>'+
+            '</div>'+
+          '</div>'+
+        '</div>'+
+      '</div>';
+    }).join("");
+  }
+
+  // 5. RENDER BURSA TITIP JUAL ANAKAN (DENGAN 4 FOTO ZOOM)
+  function renderMarketGrid(list){
+    var grid = document.getElementById("marketGrid");
+    grid.innerHTML = list.map(function(item, idx){
+      var mainImg = (item.images && item.images[0]) || item.img || './chino-dog.jpg';
+      var photoCount = (item.images && item.images.length) || 1;
+      var waText = encodeURIComponent("Halo Chino's Petshop, saya tertarik adopsi anakan: " + item.title + " seharga " + rupiah(item.price) + ". Apakah anakan ini masih tersedia?");
+      
+      return '<div class="market-card" data-type="'+item.type+'">'+
+        '<div class="market-img" onclick="openBursaLightbox('+idx+')">'+
+          '<span class="market-status '+item.statusClass+'">● '+item.status+'</span>'+
+          '<img src="'+mainImg+'" alt="'+item.title+'" loading="lazy" onerror="this.src=\'./chino-dog.jpg\'">'+
+          '<span class="photo-count-badge">📷 '+photoCount+' Foto</span>'+
+        '</div>'+
+        '<div class="market-body">'+
+          '<div>'+
+            '<h4 class="market-title" onclick="openBursaLightbox('+idx+')">'+item.title+'</h4>'+
+            '<div class="market-tags">'+
+              '<span class="m-tag">🏷️ '+item.breed+'</span>'+
+              '<span class="m-tag">⏳ '+item.age+'</span>'+
+              '<span class="m-tag">⚧ '+item.gender+'</span>'+
+              '<span class="m-tag">💉 '+item.vaccine+'</span>'+
+            '</div>'+
+            '<p class="market-desc">'+item.desc+'</p>'+
+          '</div>'+
+          '<div class="market-foot">'+
+            '<span class="market-price">'+rupiah(item.price)+'</span>'+
+            '<a class="btn-adopt" href="https://wa.me/'+WA_NUMBER+'?text='+waText+'" target="_blank">'+
+              'Adopsi via WA &raquo;'+
+            '</a>'+
+          '</div>'+
+        '</div>'+
+      '</div>';
+    }).join("");
+  }
+
+  applyStoreConfig(activeConfig);
+
+  // ================= 6. FITUR ZOOM LIGHTBOX (4 FOTO) =================
+  var currentLightboxImages = [];
+
+  function openLightboxViewer(title, price, desc, tagsHtml, images, actionUrl, actionText){
+    currentLightboxImages = images;
+    document.getElementById("lbTitle").textContent = title;
+    document.getElementById("lbPrice").textContent = price;
+    document.getElementById("lbDesc").textContent = desc;
+    document.getElementById("lbTags").innerHTML = tagsHtml;
+    
+    var btn = document.getElementById("lbActionBtn");
+    btn.href = actionUrl;
+    btn.innerHTML = actionText;
+
+    // Set foto utama
+    document.getElementById("lbMainImg").src = images[0] || './chino-dog.jpg';
+
+    // Render 4 Thumbnails
+    var thumbBox = document.getElementById("lbThumbContainer");
+    thumbBox.innerHTML = images.map(function(src, i){
+      return '<div class="lb-thumb '+(i === 0 ? 'active' : '')+'" onclick="setLightboxImage('+i+', this)">'+
+        '<img src="'+src+'" onerror="this.src=\'./chino-dog.jpg\'">'+
+      '</div>';
+    }).join("");
+
+    document.getElementById("lightboxModal").classList.add("open");
+  }
+
+  window.setLightboxImage = function(index, thumbEl){
+    document.getElementById("lbMainImg").src = currentLightboxImages[index] || './chino-dog.jpg';
+    document.querySelectorAll(".lb-thumb").forEach(function(t){ t.classList.remove("active"); });
+    thumbEl.classList.add("active");
+  };
+
+  // Buka Lightbox Anakan Titip Jual
+  window.openBursaLightbox = function(idx){
+    var item = (activeConfig.bursa || FALLBACK_STORE.bursa)[idx];
+    if(!item) return;
+    var imgs = item.images || [item.img, item.img, item.img, item.img];
+    var tags = '<span class="m-tag">🏷️ '+item.breed+'</span><span class="m-tag">⏳ '+item.age+'</span><span class="m-tag">⚧ '+item.gender+'</span><span class="m-tag">💉 '+item.vaccine+'</span><span class="m-tag '+item.statusClass+'">● '+item.status+'</span>';
+    var waUrl = "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent("Halo Chino's Petshop, saya melihat 4 foto detail untuk anakan " + item.title + " (" + rupiah(item.price) + "). Apakah anakan ini masih bisa diadopsi?");
+    openLightboxViewer(item.title, rupiah(item.price), item.desc, tags, imgs, waUrl, "Tanya / Adopsi via WhatsApp &raquo;");
+  };
+
+  // Buka Lightbox Produk Pakan
+  window.openProductLightbox = function(idx){
+    var item = (activeConfig.products || FALLBACK_STORE.products)[idx];
+    if(!item) return;
+    var imgs = item.images || [item.img, item.img, item.img, item.img];
+    var tags = '<span class="m-tag">'+item.tag+'</span><span class="m-tag">'+item.cat+'</span>';
+    var waUrl = "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent("Halo Chino's Petshop, saya ingin order produk " + item.name + " (" + rupiah(item.price) + ").");
+    openLightboxViewer(item.name, rupiah(item.price), item.desc, tags, imgs, waUrl, "Pesan Langsung via WhatsApp &raquo;");
+  };
+
+  document.getElementById("closeLightbox").onclick = function(){
+    document.getElementById("lightboxModal").classList.remove("open");
+  };
+  document.getElementById("lightboxModal").onclick = function(e){
+    if(e.target === this) this.classList.remove("open");
+  };
+
+  // ================= 7. FILTER TAB BURSA (ANJING / KUCING) =================
+  document.querySelectorAll(".btab").forEach(function(tab){
+    tab.addEventListener("click", function(){
+      document.querySelectorAll(".btab").forEach(function(t){ t.classList.remove("active"); });
+      tab.classList.add("active");
+      var type = tab.dataset.bursa;
+      
+      document.querySelectorAll("#marketGrid .market-card").forEach(function(card){
+        if(type === "all" || card.dataset.type === type){
+          card.style.display = "flex";
+        } else {
+          card.style.display = "none";
+        }
+      });
+    });
+  });
+
+  // ================= 8. KERANJANG & CHECKOUT =================
+  var cart = {};
+
+  var pGrid = document.getElementById("productGrid");
+  pGrid.addEventListener("click", function(e){
+    var plus = e.target.closest(".q-plus");
+    var minus = e.target.closest(".q-minus");
+    var addBtn = e.target.closest(".add-cart");
+
+    if(plus){
+      var val = plus.parentElement.querySelector(".q-val");
+      val.textContent = (+val.textContent) + 1;
+    } else if(minus){
+      var val = minus.parentElement.querySelector(".q-val");
+      if(+val.textContent > 1) val.textContent = (+val.textContent) - 1;
+    } else if(addBtn){
+      var name = addBtn.dataset.name, price = +addBtn.dataset.price;
+      var qty = +addBtn.closest(".card-body").querySelector(".q-val").textContent;
+      if(cart[name]) cart[name].qty += qty; else cart[name] = { price: price, qty: qty };
+      renderCart();
+      addBtn.classList.add("added"); 
+      addBtn.textContent = "✓ Masuk";
+      showToast(name + " masuk ke keranjang");
+      setTimeout(function(){ addBtn.classList.remove("added"); addBtn.textContent = "Tambah"; }, 1200);
+    }
+  });
+
+  function renderCart(){
+    var items = Object.keys(cart);
+    var box = document.getElementById("cartItems");
+    if(items.length === 0){
+      box.innerHTML = '<div class="cart-empty"><span class="ic-svg">🛒</span>Keranjang belanja kosong.<br>Pilih produk favorit Anda!</div>';
+    } else {
+      box.innerHTML = items.map(function(n){
+        var it = cart[n]; var sub = it.price * it.qty;
+        var safe = n.replace(/'/g, "\\'");
+        return '<div class="ci"><div class="ci-info"><h4>'+n+'</h4><small>'+rupiah(it.price)+'</small></div>'+
+          '<div class="ci-qty"><button onclick="chQty(\''+safe+'\',-1)">−</button><span>'+it.qty+'</span><button onclick="chQty(\''+safe+'\',1)">+</button></div>'+
+          '<div class="ci-sub">'+rupiah(sub)+'</div>'+
+          '<button class="ci-del" onclick="delItem(\''+safe+'\')">&times;</button></div>';
+      }).join("");
+    }
+    var total = items.reduce(function(s,n){ return s + cart[n].price * cart[n].qty; }, 0);
+    var totalQty = items.reduce(function(s,n){ return s + cart[n].qty; }, 0);
+    document.getElementById("cartTotal").textContent = rupiah(total);
+    var ct2 = document.getElementById("cartTotal2"); if(ct2) ct2.textContent = rupiah(total);
+    
+    document.getElementById("badge").textContent = totalQty;
+    var bm = document.getElementById("badgeMobile");
+    if(bm) bm.textContent = totalQty;
+
+    document.getElementById("toForm").disabled = items.length === 0;
+  }
+
+  window.chQty = function(n,d){ if(cart[n]){ cart[n].qty += d; if(cart[n].qty <= 0) delete cart[n]; renderCart(); } };
+  window.delItem = function(n){ delete cart[n]; renderCart(); };
+
+  function openCart(){ document.getElementById("cartDrawer").classList.add("open"); document.getElementById("overlay").classList.add("open"); }
+  function closeCart(){ document.getElementById("cartDrawer").classList.remove("open"); document.getElementById("overlay").classList.remove("open"); }
+  document.getElementById("openCart").onclick = openCart;
+  var mobCartBtn = document.getElementById("openCartMobile");
+  if(mobCartBtn) mobCartBtn.onclick = openCart;
+  document.getElementById("closeCart").onclick = closeCart;
+  document.getElementById("overlay").onclick = closeCart;
+
+  var menuToggle = document.getElementById("menuToggle");
+  var mobileMenu = document.getElementById("mobileMenu");
+  menuToggle.onclick = function(){
+    menuToggle.classList.toggle("active");
+    mobileMenu.classList.toggle("open");
+  };
+  document.querySelectorAll(".m-link").forEach(function(l){
+    l.onclick = function(){
+      menuToggle.classList.remove("active");
+      mobileMenu.classList.remove("open");
+    };
+  });
+
+  function showStep(which){
+    document.getElementById("stepCart").classList.toggle("active", which === "cart");
+    document.getElementById("stepForm").classList.toggle("active", which === "form");
+    document.getElementById("drawerTitle").textContent = (which === "form" ? "Detail Pemesanan" : "Keranjang Belanja");
+  }
+  document.getElementById("toForm").onclick = function(){ if(Object.keys(cart).length) showStep("form"); };
+  document.getElementById("backToCart").onclick = function(){ showStep("cart"); };
+
+  document.querySelectorAll(".pay-opt").forEach(function(opt){
+    opt.querySelector("input").addEventListener("change", function(){
+      document.querySelectorAll(".pay-opt").forEach(function(o){ o.classList.remove("sel"); });
+      opt.classList.add("sel");
+    });
+  });
+
+  document.getElementById("checkout").onclick = function(){
+    var items = Object.keys(cart);
+    if(items.length === 0) return;
+    var name = document.getElementById("custName").value.trim();
+    var phone = document.getElementById("custPhone").value.trim();
+    var ship = document.getElementById("custShip").value;
+    var addr = document.getElementById("custAddr").value.trim();
+    var payEl = document.querySelector('input[name="pay"]:checked');
+    
+    if(!name){ showToast("Mohon isi nama Anda"); document.getElementById("custName").focus(); return; }
+    if(!phone){ showToast("Mohon isi nomor WhatsApp"); document.getElementById("custPhone").focus(); return; }
+    if(!addr){ showToast("Mohon isi alamat lengkap"); document.getElementById("custAddr").focus(); return; }
+    if(!payEl){ showToast("Pilih metode pembayaran"); return; }
+    
+    var lines = ["🛍️ *PESANAN: CHINO'S PETSHOP*","","Halo kak, saya ingin memesan:",""];
+    var total = 0;
+    items.forEach(function(n, i){
+      var it = cart[n]; var sub = it.price * it.qty;
+      total += sub;
+      lines.push((i+1) + ". " + n + " (" + it.qty + "x) = " + rupiah(sub));
+    });
+    lines.push("");
+    lines.push("*Total: " + rupiah(total) + "*");
+    lines.push("");
+    lines.push("------------------------");
+    lines.push("*Data Pengiriman:*");
+    lines.push("Nama Penerima : " + name);
+    lines.push("No. WhatsApp  : " + phone);
+    lines.push("Pilihan Kurir : " + ship);
+    lines.push("Alamat Kirim  : " + addr);
+    lines.push("Pembayaran    : " + payEl.value);
+    lines.push("------------------------");
+    lines.push("");
+    lines.push("Mohon konfirmasi pesanan dan total ongkirnya kak. Terima kasih! 🙏");
+    
+    window.open("https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(lines.join("\n")), "_blank");
+  };
+
+  function showToast(msg){
+    var t = document.getElementById("toast"); t.textContent = msg; t.classList.add("show");
+    clearTimeout(window._tt); window._tt = setTimeout(function(){ t.classList.remove("show"); }, 1800);
+  }
+  renderCart();
+
+  // FILTER & SEARCH KATALOG
+  (function(){
+    var searchInput = document.getElementById("prodSearch");
+    var tabs = document.querySelectorAll(".ftab");
+    var notFound = document.getElementById("notFound");
+    var activeFilter = "all";
+
+    function filterProducts(){
+      var cards = document.querySelectorAll("#productGrid .card");
+      var query = searchInput.value.toLowerCase().trim();
+      var visibleCount = 0;
+
+      cards.forEach(function(card){
+        var title = card.querySelector("h3").textContent.toLowerCase();
+        var desc = (card.querySelector("p") ? card.querySelector("p").textContent.toLowerCase() : "");
+        var pet = card.dataset.pet || "";
+        var cat = card.dataset.cat || "";
+
+        var matchTab = false;
+        if(activeFilter === "all") matchTab = true;
+        else if(activeFilter === "kucing" && pet.includes("kucing")) matchTab = true;
+        else if(activeFilter === "anjing" && pet.includes("anjing")) matchTab = true;
+        else if(activeFilter === "aksesoris" && cat === "aksesoris") matchTab = true;
+        else if(activeFilter === "kesehatan" && cat === "kesehatan") matchTab = true;
+
+        var matchSearch = (title.includes(query) || desc.includes(query));
+
+        if(matchTab && matchSearch){
+          card.classList.remove("hide");
+          visibleCount++;
+        } else {
+          card.classList.add("hide");
+        }
+      });
+
+      notFound.style.display = (visibleCount === 0) ? "block" : "none";
+    }
+
+    tabs.forEach(function(tab){
+      tab.addEventListener("click", function(){
+        tabs.forEach(function(t){ t.classList.remove("active"); });
+        tab.classList.add("active");
+        activeFilter = tab.dataset.filter;
+        filterProducts();
+      });
+    });
+
+    searchInput.addEventListener("input", filterProducts);
+  })();
+
+  // KALKULATOR PACAK
+  document.getElementById("btnCalc").onclick = function(){
+    var val = document.getElementById("loopDate").value;
+    if(!val){ showToast("Pilih tanggal hari pertama loop dulu"); return; }
+    
+    var d = new Date(val);
+    function addDays(date, days){
+      var res = new Date(date);
+      res.setDate(res.getDate() + days);
+      return res;
+    }
+    function formatD(dt){
+      return dt.toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' });
+    }
+
+    var day9 = addDays(d, 9);
+    var day13 = addDays(d, 13);
+    var pacak1 = addDays(d, 10);
+    var pacak2 = addDays(d, 12);
+    var due = addDays(d, 63);
+
+    document.getElementById("fertileWindow").textContent = formatD(day9) + " – " + formatD(day13);
+    document.getElementById("matingDates").textContent = formatD(pacak1) + " & " + formatD(pacak2);
+    document.getElementById("dueDate").textContent = "± " + formatD(due);
+    
+    document.getElementById("calcResults").style.display = "grid";
+    document.getElementById("calcCta").style.display = "block";
+    
+    var textWa = "Halo Chino's Petshop, anjing betina saya mulai loop pada tanggal " + formatD(d) + 
+      ". Berdasarkan kalkulator di web, estimasi pacak ideal adalah tanggal " + formatD(pacak1) + " & " + formatD(pacak2) + 
+      ". Saya mau konsultasi jadwal pacak Chino Shih Tzu.";
+    document.getElementById("btnWaCalc").href = "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(textWa);
+  };
+
+  // FAQ TOGGLE
+  document.querySelectorAll(".faq-item").forEach(function(item){
+    item.querySelector(".faq-q").addEventListener("click", function(){
+      var isOpen = item.classList.contains("open");
+      document.querySelectorAll(".faq-item").forEach(function(i){ i.classList.remove("open"); });
+      if(!isOpen) item.classList.add("open");
+    });
+  });
+
+  // TESTIMONI
+  (function(){
+    var rating = 0;
+    var wrap = document.getElementById("rateStars");
+    var stars = Array.prototype.slice.call(wrap.querySelectorAll(".rs"));
+    function paint(n){ stars.forEach(function(s,i){ s.classList.toggle("on", i < n); }); }
+    stars.forEach(function(s){
+      s.addEventListener("mouseenter", function(){ paint(+s.dataset.v); });
+      s.addEventListener("click", function(){ rating = +s.dataset.v; paint(rating); });
+    });
+    wrap.addEventListener("mouseleave", function(){ paint(rating); });
+    
+    var COLORS = ["#f26a36","#2ec4b6","#f59e0b","#10b981","#6366f1"];
+    function initials(name){ return name.trim().split(/\s+/).map(function(w){return w[0];}).slice(0,2).join("").toUpperCase(); }
+    function addCard(rev, prepend){
+      var grid = document.getElementById("testiGrid");
+      var col = COLORS[Math.floor(Math.random()*COLORS.length)];
+      var card = document.createElement("div");
+      card.className = "t-card";
+      card.innerHTML = '<div class="t-stars">' + "★".repeat(rev.rating) + '</div>'+
+        '<p class="t-text">"'+rev.text.replace(/</g,"&lt;")+'"</p>'+
+        '<div class="t-user"><div class="t-ava" style="background:'+col+'">'+initials(rev.name)+'</div>'+
+        '<div><h4>'+rev.name.replace(/</g,"&lt;")+'<span class="badge-new">Baru</span></h4><small>Pelanggan</small></div></div>';
+      if(prepend && grid.firstChild) grid.insertBefore(card, grid.firstChild); else grid.appendChild(card);
+    }
+    
+    var saved = [];
+    try { saved = JSON.parse(localStorage.getItem("chinos_reviews")||"[]"); } catch(e){}
+    saved.forEach(function(r){ addCard(r, false); });
+
+    document.getElementById("submitRev").onclick = function(){
+      var name = document.getElementById("revName").value.trim();
+      var text = document.getElementById("revText").value.trim();
+      if(rating === 0){ showToast("Pilih jumlah bintang dulu ya"); return; }
+      if(!name){ showToast("Mohon isi nama Anda"); document.getElementById("revName").focus(); return; }
+      if(!text){ showToast("Tulis ulasan Anda"); document.getElementById("revText").focus(); return; }
+      var rev = { name:name, text:text, rating:rating };
+      addCard(rev, true);
+      saved.unshift(rev);
+      try { localStorage.setItem("chinos_reviews", JSON.stringify(saved)); } catch(e){}
+      document.getElementById("revName").value = "";
+      document.getElementById("revText").value = "";
+      rating = 0; paint(0);
+      showToast("Terima kasih atas ulasannya! 🙏");
+      document.getElementById("testimoni").scrollIntoView({behavior:"smooth"});
+    };
+  })();
+</script>
+</body>
+</html>
